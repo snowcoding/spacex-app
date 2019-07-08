@@ -3,9 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.2.0",
+    "@material-ui/icons": "^4.2.1",
+    "@material-ui/lab": "^4.0.0-alpha.19",
+    "apollo-boost": "^0.4.3",
+    "graphql": "^14.4.2",
+    "material-ui-flat-pagination": "^3.2.0",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
+    "react-apollo": "^2.5.8",
+    "react-autocomplete": "^1.8.1",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-rating": "^1.7.2",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "react-world-flags": "^1.3.0",
+    "react-youtube": "^7.9.0",
+    "recharts": "^1.6.2"
   },
   "scripts": {
     "start": "set PORT=3006 && react-scripts start",
