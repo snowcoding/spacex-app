@@ -1,15 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from './Header'
-import { BrowserRouter as Router } from 'react-router-dom'
+import LoadingSpinner from './LoadingSpinner'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(
-    <Router>
-      <Header />
-    </Router>,
-    div
-  )
+  ReactDOM.render(<LoadingSpinner />, div)
   ReactDOM.unmountComponentAtNode(div)
 })

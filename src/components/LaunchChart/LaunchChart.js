@@ -12,6 +12,7 @@ import { Container, Typography } from '@material-ui/core'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
 import './launchChart.scss'
+import LoadingSpinner from '../LoadingSpinner.js/LoadingSpinner';
 
 const launchPastsQuery = gql`
   query lpq {
@@ -35,7 +36,7 @@ export default class LaunchChart extends PureComponent {
     return (
       <Query query={launchPastsQuery}>
         {({ loading, error, data }) => {
-          if (loading) return <p>Loading...</p>
+          if (loading) return <LoadingSpinner />
           if (error) return <p>Error :(</p>
 
           const queryData = data.launchesPastResult.data

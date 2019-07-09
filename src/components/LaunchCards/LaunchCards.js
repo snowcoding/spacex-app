@@ -5,6 +5,7 @@ import { gql } from 'apollo-boost'
 import LaunchCard from '../LaunchCard/LaunchCard'
 import { LaunchContext } from '../../contexts/LaunchProvider'
 import { withRouter } from 'react-router-dom'
+import LoadingSpinner from '../LoadingSpinner.js/LoadingSpinner';
 
 const launchPastsQuery = gql`
   query lpq {
@@ -80,7 +81,7 @@ const LaunchCards = props => {
       }}
     >
       {({ loading, error, data }) => {
-        if (loading) return <p>Loading...</p>
+        if (loading) return <LoadingSpinner />
         if (error) return <p>Error :(</p>
 
         console.log('SPACE API data: ', data)
@@ -92,7 +93,7 @@ const LaunchCards = props => {
             : false
         }
 
-        const filteredResults = queryData.launchesPastResult.data.filter(
+        const filteredResults = data.launchesPastResult.data.filter(
           launch => {
             // Date Range Filtering
             const launchTime = parseInt(

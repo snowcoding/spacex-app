@@ -1,14 +1,25 @@
 import React from 'react'
-import Logo from '../../assets/rocket-logo.png'
+import Logo from '../../assets/rocket-logo-tiny.png'
 import Account from '../../assets/account.png'
+import { Link, withRouter } from 'react-router-dom'
 import './header.scss'
 
-const Header = () => {
+const Header = props => {
+  let pathName = ''
+
+  if (props.location.pathname === '/explore-launches') pathName = '/ Explore Launches'
+  else if (props.location.pathname === '/view-launches') pathName = '/ View Launches'
+
   return (
     <div className='header'>
       <div className='header-left'>
         <img src={Logo} className='logo' alt='logo' height='40' width='40' />
-        <div className='app-name'>Rockbits</div>
+        <div className='text'>
+          <Link className='header-link' to='/'>
+            RockLauncher
+          </Link>
+        </div>
+        <div className='text path'>{pathName}</div>
       </div>
       <img
         src={Account}
@@ -21,4 +32,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default withRouter(Header)

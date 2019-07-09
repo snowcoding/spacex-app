@@ -9,15 +9,21 @@ div.header {
 
 div.header-left {
   display: flex;
-  flex-wrap: nowrap;
   justify-content: flex-start;
 }
 
-div.header-left div.app-name {
-  margin-left: 10%;
+div.header-left div.text {
   font-size: 22px;
   padding-top: 9px;
   color: #395c6d;
+}
+
+.header-link {
+  text-decoration:none;
+}
+
+div.text.path {
+  margin-left: 10px;
 }
 
 div.header-left div.logo {
