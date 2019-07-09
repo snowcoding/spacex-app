@@ -1,15 +1,21 @@
 import React from 'react'
 import Filters from '../Filters/Filters'
 import LaunchCardDetails from '../LaunchCardDetails/LaunchCardDetails'
-import LaunchCards from '../LaunchCards/LaunchCards'
 import { Container } from '@material-ui/core'
 import './launchContent.scss'
+import LaunchCardsHeader from '../LaunchCardsHeader/LaunchCardsHeader'
+import LaunchCards from '../LaunchCards/LaunchCards'
+import LaunchCardsFooter from '../LaunchCardsFooter/LaunchCardsFooter'
 
 const LaunchContent = () => {
   return (
     <Container className='launch-content-container'>
       <Filters />
-      <LaunchCards />
+      <div className='launch-cards-container'>
+        <LaunchCardsHeader />
+        <LaunchCards />
+        <LaunchCardsFooter />
+      </div>
       <LaunchCardDetails />
     </Container>
   )

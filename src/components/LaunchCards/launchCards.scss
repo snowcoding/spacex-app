@@ -1,3 +1,6 @@
 div.launch-cards {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 20px;
   flex-basis: 80%;
 }

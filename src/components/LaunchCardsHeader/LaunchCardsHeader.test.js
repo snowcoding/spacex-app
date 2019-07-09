@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import LaunchContent from './LaunchContent'
-import Apollo from '../Apollo/Apollo'
+import LaunchCardsHeader from './LaunchCardsHeader'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(<Apollo><LaunchContent /></Apollo>, div)
+  ReactDOM.render(<LaunchCardsHeader />, div)
   ReactDOM.unmountComponentAtNode(div)
 })
