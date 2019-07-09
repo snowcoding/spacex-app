@@ -29,17 +29,23 @@ const reducer = (state, action) => {
         ...state,
         payloadWeight: action.payloadWeightValue,
       }
-      case 'changeLaunchesPerPage':
-        return {
-          ...state,
-          launchesPerPage: action.launchesPerPage,
-        }
-  
-      case 'changeLaunchSort':
-        return {
-          ...state,
-          launchSort: action.launchSort,
-        }
+    case 'changeLaunchesPerPage':
+      return {
+        ...state,
+        launchesPerPage: action.launchesPerPage,
+      }
+
+    case 'changeLaunchSort':
+      return {
+        ...state,
+        launchSort: action.launchSort,
+      }
+
+    case 'changePaginationOffset':
+      return {
+        ...state,
+        paginationOffset: action.paginationOffset,
+      }
     default:
       throw new Error()
   }
@@ -87,6 +93,14 @@ export const changeLaunchSort = launchSort => {
     launchSort,
   }
 }
+
+export const changePaginationOffset = paginationOffset => {
+  return {
+    type: 'changePaginationOffset',
+    paginationOffset,
+  }
+}
+
 const LaunchProvider = props => {
   const initialState = {
     filterDateRange: [2006, 2020],
@@ -95,6 +109,7 @@ const LaunchProvider = props => {
     payloadWeight: 4,
     launchesPerPage: 0,
     launchSort: '',
+    paginationOffset: 0,
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)

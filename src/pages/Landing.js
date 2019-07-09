@@ -11,12 +11,12 @@ const Landing = () => {
           Welcome to Rock Launcher
         </Typography>
         <p className='landing-tagline'>
-          A small app that let's allows you to explore rocket launches of Space
+          A small app that helps explore all the rocket launches of Space
           X <i className='fal fa-space-shuttle' />
         </p>
         <div className='landing-link-container'>
           <span className='landing-link'>
-            <Link to='/view-launches'>View Launches</Link>
+            <Link to='/launches-over-time'>Launches over time</Link>
           </span>
           <span className='landing-link'>
             <Link to='/explore-launches'>Explore Launches</Link>

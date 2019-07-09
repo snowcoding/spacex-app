@@ -8,7 +8,7 @@ const Header = props => {
   let pathName = ''
 
   if (props.location.pathname === '/explore-launches') pathName = '/ Explore Launches'
-  else if (props.location.pathname === '/view-launches') pathName = '/ View Launches'
+  else if (props.location.pathname === '/launches-over-time') pathName = '/ Launches over Time'
 
   return (
     <div className='header'>

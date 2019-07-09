@@ -21,7 +21,7 @@ const App = () => {
         <Router>
             <Header />
             <Route path='/' exact component={Landing} />
-            <Route path='/view-launches' exact component={ViewLaunches} />
+            <Route path='/launches-over-time' exact component={ViewLaunches} />
             <Route exact path='/explore-launches' component={ExploreLaunches} />
         </Router>
       </CssBaseline>

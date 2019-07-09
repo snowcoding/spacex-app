@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom'
 import LoadingSpinner from '../LoadingSpinner.js/LoadingSpinner';
 
 const launchPastsQuery = gql`
+# Sorting Occurs in the query itself
   query lpq($sort: String, $order: String) {
     launchesPastResult(sort: $sort, order: $order) {
       result {
@@ -35,6 +36,7 @@ const launchPastsQuery = gql`
 const LaunchCards = props => {
   const [queryData, setQueryData] = useState({})
   const [state] = useContext(LaunchContext)
+  const { setFilteredResultsCount } = props
 
   const dateRangeURL = `${state.filterDateRange[0]}+${state.filterDateRange[1]}`
   const showFailureURL = state.filterFailures
@@ -101,6 +103,9 @@ const LaunchCards = props => {
 
         const filteredResults = data.launchesPastResult.data.filter(
           launch => {
+            //
+            // Filtering begins here
+            //
             // Date Range Filtering
             const launchTime = parseInt(
               launch.launch_date_local.split('-')[0],
@@ -144,9 +149,28 @@ const LaunchCards = props => {
           }
         )
 
+        //
+        //Pagination begins here
+        //
+        let paginationResults = filteredResults
+
+        if (state.launchesPerPage !== 0) {
+          paginationResults = filteredResults.filter((launch, ind) => {
+            return (
+              ind >= state.paginationOffset &&
+              ind < state.launchesPerPage + state.paginationOffset
+            )
+          })
+        }
+        
+        console.log("filteredResults.length: " ,filteredResults.length)
+        setFilteredResultsCount(filteredResults.length)
+
+
+        //Finally return cards...
         return (
           <div className='launch-cards'>
-            {filteredResults.map(launch => {
+            {paginationResults.map(launch => {
               return (
                 <LaunchCard
                   key={launch.id}
