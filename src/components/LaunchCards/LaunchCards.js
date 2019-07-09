@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './launchCards.scss'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
-import LaunchCard from '../LaunchCard/LaunchCard';
+import LaunchCard from '../LaunchCard/LaunchCard'
+import { LaunchContext } from '../../contexts/LaunchProvider'
 
 const launchPastsQuery = gql`
   query lpq {
@@ -31,6 +32,7 @@ const launchPastsQuery = gql`
 `
 const LaunchBox = () => {
   const [queryData, setQueryData] = useState({})
+  const [state] = useContext(LaunchContext)
 
   return (
     <Query
@@ -45,9 +47,27 @@ const LaunchBox = () => {
 
         console.log('SPACE API data: ', data)
 
+        const filteredResults = queryData.launchesPastResult.data.filter(
+          launch => {
+            // Date Range Filtering
+            const launchTime = parseInt(
+              launch.launch_date_local.split('-')[0],
+              10
+            )
+            const isCardFilteredByDateRange =
+              launchTime >= state.filterDateRange[0] &&
+              launchTime <= state.filterDateRange[1]
+                ? true
+                : false
+            const isCardFiltered = isCardFilteredByDateRange
+
+            return isCardFiltered
+          }
+        )
+
         return (
           <div className='launch-cards'>
-            {queryData.launchesPastResult.data.map(launch => {
+            {filteredResults.map(launch => {
               return (
                 <LaunchCard
                   key={launch.id}
