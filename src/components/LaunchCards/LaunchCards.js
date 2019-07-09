@@ -1,9 +1,10 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './launchCards.scss'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
 import LaunchCard from '../LaunchCard/LaunchCard'
 import { LaunchContext } from '../../contexts/LaunchProvider'
+import { withRouter } from 'react-router-dom'
 
 const launchPastsQuery = gql`
   query lpq {
@@ -30,9 +31,29 @@ const launchPastsQuery = gql`
     }
   }
 `
-const LaunchBox = () => {
+const LaunchCards = (props) => {
   const [queryData, setQueryData] = useState({})
   const [state] = useContext(LaunchContext)
+
+  const dateRangeURL = `${state.filterDateRange[0]}+${state.filterDateRange[1]}`
+
+  const searchQueryString = searchParams => {
+    return Object.keys(searchParams)
+      .filter(k => searchParams[k] && String(searchParams[k]).length > 0)
+      .reduce((acc, val) => {
+        return `${acc}${acc !== '' ? '&' : ''}${val}=${searchParams[val]}`
+      }, '')
+  }
+
+  useEffect(() => {
+    props.history.push({
+      search: searchQueryString({
+        daterange: dateRangeURL,
+      }),
+    })
+  }, [
+    dateRangeURL,
+  ])
 
   return (
     <Query
@@ -88,4 +109,4 @@ const LaunchBox = () => {
   )
 }
 
-export default LaunchBox
+export default withRouter(LaunchCards)
