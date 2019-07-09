@@ -11,9 +11,20 @@ const reducer = (state, action) => {
         ...state,
         filterDateRange: [...action.filterDateRange],
       }
+    case 'changeFilterFailures':
+      return {
+        ...state,
+        filterFailures: action.filterFailures,
+      }
 
     default:
       throw new Error()
+  }
+}
+export const changeFilterFailures = filterFailures => {
+  return {
+    type: 'changeFilterFailures',
+    filterFailures,
   }
 }
 
@@ -27,6 +38,7 @@ export const changeFilterDateRange = filterDateRange => {
 const LaunchProvider = props => {
   const initialState = {
     filterDateRange: [2006, 2020],
+    filterFailures: false,
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)

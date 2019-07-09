@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, memo } from 'react'
 import './launchCards.scss'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
@@ -31,11 +31,12 @@ const launchPastsQuery = gql`
     }
   }
 `
-const LaunchCards = (props) => {
+const LaunchCards = props => {
   const [queryData, setQueryData] = useState({})
   const [state] = useContext(LaunchContext)
 
   const dateRangeURL = `${state.filterDateRange[0]}+${state.filterDateRange[1]}`
+  const showFailureURL = state.filterFailures
 
   const searchQueryString = searchParams => {
     return Object.keys(searchParams)
@@ -49,11 +50,10 @@ const LaunchCards = (props) => {
     props.history.push({
       search: searchQueryString({
         daterange: dateRangeURL,
+        showFailures: showFailureURL,
       }),
     })
-  }, [
-    dateRangeURL,
-  ])
+  }, [dateRangeURL, props.history, showFailureURL])
 
   return (
     <Query
@@ -80,7 +80,16 @@ const LaunchCards = (props) => {
               launchTime <= state.filterDateRange[1]
                 ? true
                 : false
-            const isCardFiltered = isCardFilteredByDateRange
+
+            // Failure Selection Filtering
+            const isCardFilteredByFailure =
+              (!launch.launch_success && state.filterFailures) ||
+              !state.filterFailures
+                ? true
+                : false
+
+            const isCardFiltered =
+              isCardFilteredByDateRange && isCardFilteredByFailure
 
             return isCardFiltered
           }
@@ -109,4 +118,4 @@ const LaunchCards = (props) => {
   )
 }
 
-export default withRouter(LaunchCards)
+export default withRouter(memo(LaunchCards))

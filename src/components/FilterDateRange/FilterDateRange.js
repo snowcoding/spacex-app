@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import {Slider} from '@material-ui/core'
-import {LaunchContext,changeFilterDateRange}  from '../../contexts/LaunchProvider'
+import { Slider } from '@material-ui/core'
+import { LaunchContext, changeFilterDateRange} from '../../contexts/LaunchProvider'
+import './filterDateRange.scss'
 
 const useStyles = makeStyles({
   root: {
     width: 175,
     display: 'flex',
-    flexDirection:'column',
+    flexDirection: 'column',
     marginLeft: 13,
     marginTop: 30,
     marginBottom: 30,
@@ -48,7 +49,7 @@ export default function FilterDateRange() {
 
   return (
     <div className={classes.root}>
-      <Typography id='range-slider' gutterBottom>
+      <Typography id='range-slider' gutterBottom className='date-range-label'>
         Date
       </Typography>
       <Slider
