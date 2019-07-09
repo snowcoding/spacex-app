@@ -29,7 +29,17 @@ const reducer = (state, action) => {
         ...state,
         payloadWeight: action.payloadWeightValue,
       }
-
+      case 'changeLaunchesPerPage':
+        return {
+          ...state,
+          launchesPerPage: action.launchesPerPage,
+        }
+  
+      case 'changeLaunchSort':
+        return {
+          ...state,
+          launchSort: action.launchSort,
+        }
     default:
       throw new Error()
   }
@@ -63,12 +73,28 @@ export const changePayloadWeight = payloadWeightValue => {
     payloadWeightValue,
   }
 }
+
+export const changeLaunchesPerPage = launchesPerPage => {
+  return {
+    type: 'changeLaunchesPerPage',
+    launchesPerPage,
+  }
+}
+
+export const changeLaunchSort = launchSort => {
+  return {
+    type: 'changeLaunchSort',
+    launchSort,
+  }
+}
 const LaunchProvider = props => {
   const initialState = {
     filterDateRange: [2006, 2020],
     filterFailures: false,
     payload: { satellite: true, dragon: true },
     payloadWeight: 4,
+    launchesPerPage: 0,
+    launchSort: '',
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)

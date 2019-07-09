@@ -8,8 +8,8 @@ import { withRouter } from 'react-router-dom'
 import LoadingSpinner from '../LoadingSpinner.js/LoadingSpinner';
 
 const launchPastsQuery = gql`
-  query lpq {
-    launchesPastResult {
+  query lpq($sort: String, $order: String) {
+    launchesPastResult(sort: $sort, order: $order) {
       result {
         totalCount
       }
@@ -39,6 +39,9 @@ const LaunchCards = props => {
   const dateRangeURL = `${state.filterDateRange[0]}+${state.filterDateRange[1]}`
   const showFailureURL = state.filterFailures
   const payloadWeightURL = state.payloadWeight
+  
+  const [sort, order] = state.launchSort.split('-')
+  const launchCardsSortURL = sort ? `${sort}+${order}` : null
 
   const payloadURLparams = (acc, cv) => {
     return `${acc}${acc !== '' ? '+' : ''}${cv}`
@@ -63,6 +66,7 @@ const LaunchCards = props => {
         showFailures: showFailureURL,
         payload: payloadURL,
         payloadWeight: payloadWeightURL,
+        launchCardSort: launchCardsSortURL,
       }),
     })
   }, [
@@ -71,6 +75,7 @@ const LaunchCards = props => {
     showFailureURL,
     payloadURL,
     payloadWeightURL,
+    launchCardsSortURL,
   ])
 
   return (
@@ -79,6 +84,7 @@ const LaunchCards = props => {
       onCompleted={data => {
         setQueryData(data)
       }}
+      variables={{ sort: sort, order: order }}
     >
       {({ loading, error, data }) => {
         if (loading) return <LoadingSpinner />
