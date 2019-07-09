@@ -37,6 +37,7 @@ const LaunchCards = props => {
 
   const dateRangeURL = `${state.filterDateRange[0]}+${state.filterDateRange[1]}`
   const showFailureURL = state.filterFailures
+  const payloadWeightURL = state.payloadWeight
 
   const payloadURLparams = (acc, cv) => {
     return `${acc}${acc !== '' ? '+' : ''}${cv}`
@@ -60,9 +61,16 @@ const LaunchCards = props => {
         daterange: dateRangeURL,
         showFailures: showFailureURL,
         payload: payloadURL,
+        payloadWeight: payloadWeightURL,
       }),
     })
-  }, [dateRangeURL, props.history, showFailureURL, payloadURL])
+  }, [
+    dateRangeURL,
+    props.history,
+    showFailureURL,
+    payloadURL,
+    payloadWeightURL,
+  ])
 
   return (
     <Query
@@ -108,10 +116,22 @@ const LaunchCards = props => {
             const isCardFilteredByPayLoad = launch.rocket.second_stage.payloads.some(
               isPayloadSatOrDragon
             )
+
+            //Filtering by Payload Weight
+            const payloadLength = launch.rocket.second_stage.payloads.length
+            const isCardFilteredByPayloadWeight =
+              state.payloadWeight === 4 ||
+              (state.payloadWeight === 3 && payloadLength === 3) ||
+              (state.payloadWeight === 2 && payloadLength === 2) ||
+              (state.payloadWeight === 1 && payloadLength === 1)
+                ? true
+                : false
+
             const isCardFiltered =
               isCardFilteredByDateRange &&
               isCardFilteredByFailure &&
-              isCardFilteredByPayLoad
+              isCardFilteredByPayLoad &&
+              isCardFilteredByPayloadWeight
 
             return isCardFiltered
           }

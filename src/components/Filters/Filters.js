@@ -4,6 +4,7 @@ import FilterDateRange from '../FilterDateRange/FilterDateRange'
 import { Typography } from '@material-ui/core'
 import FilterFailures from '../FilterFailures/FilterFailures';
 import FilterPayloadTypes from '../FilterPayloadType/FilterPayloadType'
+import FilterPayloadWeight from '../FilterPayloadWeight/FilterPayloadWeight'
 
 const Filters = () => {
   return (
@@ -14,6 +15,7 @@ const Filters = () => {
       <FilterDateRange />
       <FilterFailures />
       <FilterPayloadTypes />
+      <FilterPayloadWeight />
     </div>
   )
 }

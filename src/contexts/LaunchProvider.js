@@ -16,14 +16,19 @@ const reducer = (state, action) => {
         ...state,
         filterFailures: action.filterFailures,
       }
-      case 'changePayload':
-        return {
-          ...state,
-          payload: {
-            ...state.payload,
-            [action.payloadType]: action.payloadValue,
-          },
-        }
+    case 'changePayload':
+      return {
+        ...state,
+        payload: {
+          ...state.payload,
+          [action.payloadType]: action.payloadValue,
+        },
+      }
+    case 'changePayloadWeight':
+      return {
+        ...state,
+        payloadWeight: action.payloadWeightValue,
+      }
 
     default:
       throw new Error()
@@ -52,11 +57,18 @@ export const changeFilterDateRange = filterDateRange => {
   }
 }
 
+export const changePayloadWeight = payloadWeightValue => {
+  return {
+    type: 'changePayloadWeight',
+    payloadWeightValue,
+  }
+}
 const LaunchProvider = props => {
   const initialState = {
     filterDateRange: [2006, 2020],
     filterFailures: false,
     payload: { satellite: true, dragon: true },
+    payloadWeight: 4,
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
