@@ -16,11 +16,28 @@ const reducer = (state, action) => {
         ...state,
         filterFailures: action.filterFailures,
       }
+      case 'changePayload':
+        return {
+          ...state,
+          payload: {
+            ...state.payload,
+            [action.payloadType]: action.payloadValue,
+          },
+        }
 
     default:
       throw new Error()
   }
 }
+
+export const changePayload = (payloadType, payloadValue) => {
+  return {
+    type: 'changePayload',
+    payloadType,
+    payloadValue,
+  }
+}
+
 export const changeFilterFailures = filterFailures => {
   return {
     type: 'changeFilterFailures',
@@ -39,6 +56,7 @@ const LaunchProvider = props => {
   const initialState = {
     filterDateRange: [2006, 2020],
     filterFailures: false,
+    payload: { satellite: true, dragon: true },
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)

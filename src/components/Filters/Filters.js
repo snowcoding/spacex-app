@@ -3,6 +3,7 @@ import './filters.scss'
 import FilterDateRange from '../FilterDateRange/FilterDateRange'
 import { Typography } from '@material-ui/core'
 import FilterFailures from '../FilterFailures/FilterFailures';
+import FilterPayloadTypes from '../FilterPayloadType/FilterPayloadType'
 
 const Filters = () => {
   return (
@@ -12,6 +13,7 @@ const Filters = () => {
       </Typography>
       <FilterDateRange />
       <FilterFailures />
+      <FilterPayloadTypes />
     </div>
   )
 }

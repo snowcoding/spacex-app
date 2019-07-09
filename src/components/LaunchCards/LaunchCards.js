@@ -38,6 +38,14 @@ const LaunchCards = props => {
   const dateRangeURL = `${state.filterDateRange[0]}+${state.filterDateRange[1]}`
   const showFailureURL = state.filterFailures
 
+  const payloadURLparams = (acc, cv) => {
+    return `${acc}${acc !== '' ? '+' : ''}${cv}`
+  }
+
+  const payloadURL = Object.keys(state.payload)
+    .filter(k => state.payload[k] === true)
+    .reduce(payloadURLparams, '')
+
   const searchQueryString = searchParams => {
     return Object.keys(searchParams)
       .filter(k => searchParams[k] && String(searchParams[k]).length > 0)
@@ -51,9 +59,10 @@ const LaunchCards = props => {
       search: searchQueryString({
         daterange: dateRangeURL,
         showFailures: showFailureURL,
+        payload: payloadURL,
       }),
     })
-  }, [dateRangeURL, props.history, showFailureURL])
+  }, [dateRangeURL, props.history, showFailureURL, payloadURL])
 
   return (
     <Query
@@ -67,6 +76,13 @@ const LaunchCards = props => {
         if (error) return <p>Error :(</p>
 
         console.log('SPACE API data: ', data)
+
+        const isPayloadSatOrDragon = pl => {
+          return (state.payload.satellite && pl.payload_type === 'Satellite') ||
+            (state.payload.dragon && pl.payload_type.includes('Dragon'))
+            ? true
+            : false
+        }
 
         const filteredResults = queryData.launchesPastResult.data.filter(
           launch => {
@@ -88,8 +104,14 @@ const LaunchCards = props => {
                 ? true
                 : false
 
+            // Filtering by Payload Type
+            const isCardFilteredByPayLoad = launch.rocket.second_stage.payloads.some(
+              isPayloadSatOrDragon
+            )
             const isCardFiltered =
-              isCardFilteredByDateRange && isCardFilteredByFailure
+              isCardFilteredByDateRange &&
+              isCardFilteredByFailure &&
+              isCardFilteredByPayLoad
 
             return isCardFiltered
           }
