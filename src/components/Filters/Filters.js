@@ -9,7 +9,7 @@ import FilterPayloadWeight from '../FilterPayloadWeight/FilterPayloadWeight'
 const Filters = () => {
   return (
     <div className='filters'>
-      <Typography variant='h5' color='primary' gutterBottom>
+      <Typography variant='h6' color='primary' gutterBottom>
         Launch Filters
       </Typography>
       <FilterDateRange />

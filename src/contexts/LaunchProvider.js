@@ -53,6 +53,13 @@ const reducer = (state, action) => {
         cardId: action.cardId,
       }
 
+      case 'changeFilterCountries':
+
+      return {
+        ...state,
+        countries: action.countries === null ? [] : [...action.countries],
+      }  
+
     default:
       throw new Error()
   }
@@ -115,6 +122,13 @@ export const changeLaunchCardDetails = cardId => {
   }
 }
 
+export const changeFilterCountries = countries => {
+  return {
+    type: 'changeFilterCountries',
+    countries,
+  }
+}
+
 const LaunchProvider = props => {
   const initialState = {
     filterDateRange: [2006, 2020],
@@ -125,6 +139,7 @@ const LaunchProvider = props => {
     launchSort: '',
     paginationOffset: 0,
     cardId: 0,
+    countries: [],
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)

@@ -1,5 +1,10 @@
 .launch-cards-header {
     display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+  }
+
+  .launch-cards-sort-per-page {
+    display: flex;
     justify-content: flex-end;
-    padding-bottom: 10px;
   }

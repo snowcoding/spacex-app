@@ -5,10 +5,10 @@ import { gql } from 'apollo-boost'
 import LaunchCard from '../LaunchCard/LaunchCard'
 import { LaunchContext } from '../../contexts/LaunchProvider'
 import { withRouter } from 'react-router-dom'
-import LoadingSpinner from '../LoadingSpinner.js/LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner.js/LoadingSpinner'
 
 const launchPastsQuery = gql`
-# Sorting Occurs in the query itself
+  # Sorting Occurs in the query itself
   query lpq($sort: String, $order: String) {
     launchesPastResult(sort: $sort, order: $order) {
       result {
@@ -41,7 +41,7 @@ const LaunchCards = props => {
   const dateRangeURL = `${state.filterDateRange[0]}+${state.filterDateRange[1]}`
   const showFailureURL = state.filterFailures
   const payloadWeightURL = state.payloadWeight
-  
+
   const [sort, order] = state.launchSort.split('-')
   const launchCardsSortURL = sort ? `${sort}+${order}` : null
 
@@ -101,53 +101,67 @@ const LaunchCards = props => {
             : false
         }
 
-        const filteredResults = data.launchesPastResult.data.filter(
-          launch => {
-            //
-            // Filtering begins here
-            //
-            // Date Range Filtering
-            const launchTime = parseInt(
-              launch.launch_date_local.split('-')[0],
-              10
-            )
-            const isCardFilteredByDateRange =
-              launchTime >= state.filterDateRange[0] &&
-              launchTime <= state.filterDateRange[1]
-                ? true
-                : false
+        const filteredResults = data.launchesPastResult.data.filter(launch => {
+          //
+          // Filtering begins here
+          //
+          // Date Range Filtering
+          const launchTime = parseInt(
+            launch.launch_date_local.split('-')[0],
+            10
+          )
+          const isCardFilteredByDateRange =
+            launchTime >= state.filterDateRange[0] &&
+            launchTime <= state.filterDateRange[1]
+              ? true
+              : false
 
-            // Failure Selection Filtering
-            const isCardFilteredByFailure =
-              (!launch.launch_success && state.filterFailures) ||
-              !state.filterFailures
-                ? true
-                : false
+          // Failure Selection Filtering
+          const isCardFilteredByFailure =
+            (!launch.launch_success && state.filterFailures) ||
+            !state.filterFailures
+              ? true
+              : false
 
-            // Filtering by Payload Type
-            const isCardFilteredByPayLoad = launch.rocket.second_stage.payloads.some(
-              isPayloadSatOrDragon
-            )
+          // Filtering by Payload Type
+          const isCardFilteredByPayLoad = launch.rocket.second_stage.payloads.some(
+            isPayloadSatOrDragon
+          )
 
-            //Filtering by Payload Weight
-            const payloadLength = launch.rocket.second_stage.payloads.length
-            const isCardFilteredByPayloadWeight =
-              state.payloadWeight === 4 ||
-              (state.payloadWeight === 3 && payloadLength === 3) ||
-              (state.payloadWeight === 2 && payloadLength === 2) ||
-              (state.payloadWeight === 1 && payloadLength === 1)
-                ? true
-                : false
+          //Filtering by Payload Weight
+          const payloadLength = launch.rocket.second_stage.payloads.length
+          const isCardFilteredByPayloadWeight =
+            state.payloadWeight === 4 ||
+            (state.payloadWeight === 3 && payloadLength === 3) ||
+            (state.payloadWeight === 2 && payloadLength === 2) ||
+            (state.payloadWeight === 1 && payloadLength === 1)
+              ? true
+              : false
 
-            const isCardFiltered =
-              isCardFilteredByDateRange &&
-              isCardFilteredByFailure &&
-              isCardFilteredByPayLoad &&
-              isCardFilteredByPayloadWeight
+          //Filtering by countries entered in the seach bar    
+          const searchedCountries = state.countries.map(
+            country => country.label
+          )
+          const countriesOnCard = launch.rocket.second_stage.payloads.map(
+            payload => payload.nationality
+          )
+          const isCountryFilteredBySearch =
+            searchedCountries.length === 0 ||
+            searchedCountries.filter(element =>
+              countriesOnCard.includes(element)
+            ).length > 0
+              ? true
+              : false
 
-            return isCardFiltered
-          }
-        )
+          const isCardFiltered =
+            isCardFilteredByDateRange &&
+            isCardFilteredByFailure &&
+            isCardFilteredByPayLoad &&
+            isCardFilteredByPayloadWeight &&
+            isCountryFilteredBySearch
+
+          return isCardFiltered
+        })
 
         //
         //Pagination begins here
@@ -162,10 +176,8 @@ const LaunchCards = props => {
             )
           })
         }
-        
-        console.log("filteredResults.length: " ,filteredResults.length)
-        setFilteredResultsCount(filteredResults.length)
 
+        setFilteredResultsCount(filteredResults.length)
 
         //Finally return cards...
         return (
