@@ -1,0 +1,10 @@
+@import '../../globals.scss';
+
+.filter-results-empty {
+    padding: 120px;
+}
+
+p.results-empty-text {
+    color: $mui-primary;
+    font-size: 1.3em;
+}

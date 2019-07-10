@@ -6,6 +6,7 @@ import LaunchCard from '../LaunchCard/LaunchCard'
 import { LaunchContext } from '../../contexts/LaunchProvider'
 import { withRouter } from 'react-router-dom'
 import LoadingSpinner from '../LoadingSpinner.js/LoadingSpinner'
+import FilterResultsEmpty from '../FilterResultsEmpty/FilterResultsEmpty'
 
 const launchPastsQuery = gql`
   # Sorting Occurs in the query itself
@@ -138,7 +139,7 @@ const LaunchCards = props => {
               ? true
               : false
 
-          //Filtering by countries entered in the seach bar    
+          //Filtering by countries entered in the seach bar
           const searchedCountries = state.countries.map(
             country => country.label
           )
@@ -183,20 +184,24 @@ const LaunchCards = props => {
         //Finally return cards...
         return (
           <div className='launch-cards'>
-            {paginationResults.map(launch => {
-              return (
-                <LaunchCard
-                  key={launch.id}
-                  launchId={launch.id}
-                  rocketName={launch.rocket.rocket_name}
-                  payloads={launch.rocket.second_stage.payloads}
-                  missionName={launch.mission_name}
-                  missionId={launch.mission_id}
-                  date={launch.launch_date_local}
-                  success={launch.launch_success}
-                />
-              )
-            })}
+            {paginationResults.length === 0 ? (
+              <FilterResultsEmpty />
+            ) : (
+              paginationResults.map(launch => {
+                return (
+                  <LaunchCard
+                    key={launch.id}
+                    launchId={launch.id}
+                    rocketName={launch.rocket.rocket_name}
+                    payloads={launch.rocket.second_stage.payloads}
+                    missionName={launch.mission_name}
+                    missionId={launch.mission_id}
+                    date={launch.launch_date_local}
+                    success={launch.launch_success}
+                  />
+                )
+              })
+            )}
           </div>
         )
       }}
