@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
-// import Pagination from 'material-ui-flat-pagination'
 import {
   LaunchContext,
-  changePaginationOffset,
   changeLaunchesPerPage,
   changePaginationPage,
 } from '../../contexts/LaunchProvider'
@@ -14,7 +12,6 @@ const LaunchCardsFooter = props => {
   const [state, dispatch] = useContext(LaunchContext)
 
   const handleChangePage = (e,page) => {
-    // dispatch(changePaginationOffset(offset))
     console.log('page:', page)
     dispatch(changePaginationPage(page))
   }
@@ -49,15 +46,6 @@ const LaunchCardsFooter = props => {
           </TableRow>
         </TableFooter>
       </Table>
-
-      {/* {state.launchesPerPage === 0 ? null : (
-        <Pagination
-          limit={state.launchesPerPage}
-          offset={state.paginationOffset}
-          total={filteredResultsCount}
-          onClick={(e, offset) => handlePageChange(offset)}
-        />
-      )} */}
     </div>
   )
 }
