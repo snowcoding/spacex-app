@@ -6,7 +6,6 @@ import { colors, CssBaseline } from '@material-ui/core'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import Landing from './pages/Landing'
 import Header from './components/Header/Header'
-import ErrorBoundary from './utils/ErrorBoundry'
 
 const rockBitTheme = createMuiTheme({
   palette: {
