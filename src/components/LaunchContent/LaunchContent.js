@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Filters from '../Filters/Filters'
-// import LaunchCardDetails from '../LaunchCardDetails/LaunchCardDetails'
+import LaunchCardDetails from '../LaunchCardDetails/LaunchCardDetails'
 import { Container } from '@material-ui/core'
 import './launchContent.scss'
 import LaunchCardsHeader from '../LaunchCardsHeader/LaunchCardsHeader'
@@ -20,7 +20,7 @@ const LaunchContent = () => {
           <LaunchCards setFilteredResultsCount={setFilteredResultsCount} />
           <LaunchCardsFooter filteredResultsCount={filteredResultsCount} />
         </Container>
-        {/* <LaunchCardDetails /> */}
+        <LaunchCardDetails />
       </Container>
     </LaunchProvider>
   )

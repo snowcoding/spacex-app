@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Flag from 'react-world-flags'
 import './launchCard.scss'
+import { LaunchContext, changeLaunchCardDetails } from '../../contexts/LaunchProvider';
 
 const useStyles = makeStyles({
   card: {
@@ -32,8 +33,9 @@ const useStyles = makeStyles({
 
 export default function LaunchCard(props) {
   const classes = useStyles()
+  const [state, dispatch] = useContext(LaunchContext)
 
-  const { rocketName, payloads, missionName, date, success } = props
+  const { rocketName, payloads, missionName, date, success, launchId } = props
 
   const isPayloadSatellite = payloads
     ? payloads.some(pl => {
@@ -74,8 +76,13 @@ export default function LaunchCard(props) {
     Malaysia: 'MAL',
   }
 
+  const openLaunchCardDetails = () => {
+    dispatch(changeLaunchCardDetails(launchId))
+    document.getElementById('launch-detail-id').style.width = '350px'
+  }
+
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} onClick={openLaunchCardDetails}> 
       <CardContent className={classes.cardContent}>
         <div className='flag-group'>
           {uniqueNations

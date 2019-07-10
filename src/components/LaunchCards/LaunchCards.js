@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, memo } from 'react'
+import React, { useContext, useEffect, memo } from 'react'
 import './launchCards.scss'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
@@ -34,7 +34,7 @@ const launchPastsQuery = gql`
   }
 `
 const LaunchCards = props => {
-  const [queryData, setQueryData] = useState({})
+  // const [queryData, setQueryData] = useState({})
   const [state] = useContext(LaunchContext)
   const { setFilteredResultsCount } = props
 
@@ -83,16 +83,16 @@ const LaunchCards = props => {
   return (
     <Query
       query={launchPastsQuery}
-      onCompleted={data => {
-        setQueryData(data)
-      }}
+      // onCompleted={data => {
+      //   setQueryData(data)
+      // }}
       variables={{ sort: sort, order: order }}
     >
       {({ loading, error, data }) => {
         if (loading) return <LoadingSpinner />
         if (error) return <p>Error :(</p>
 
-        console.log('SPACE API data: ', data)
+        console.log('Launch Cards Data: ', data)
 
         const isPayloadSatOrDragon = pl => {
           return (state.payload.satellite && pl.payload_type === 'Satellite') ||

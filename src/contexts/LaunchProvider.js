@@ -46,6 +46,13 @@ const reducer = (state, action) => {
         ...state,
         paginationOffset: action.paginationOffset,
       }
+
+    case 'changeLaunchCardDetails':
+      return {
+        ...state,
+        cardId: action.cardId,
+      }
+
     default:
       throw new Error()
   }
@@ -101,6 +108,13 @@ export const changePaginationOffset = paginationOffset => {
   }
 }
 
+export const changeLaunchCardDetails = cardId => {
+  return {
+    type: 'changeLaunchCardDetails',
+    cardId,
+  }
+}
+
 const LaunchProvider = props => {
   const initialState = {
     filterDateRange: [2006, 2020],
@@ -110,6 +124,7 @@ const LaunchProvider = props => {
     launchesPerPage: 0,
     launchSort: '',
     paginationOffset: 0,
+    cardId: 0,
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
