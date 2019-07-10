@@ -6,7 +6,7 @@ import { Container } from '@material-ui/core'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize'
 import { LaunchContext } from '../../contexts/LaunchProvider';
 import LaunchPhotos from '../LaunchPhotos/LaunchPhotos';
-// import LaunchVideo from '../LaunchVideo/LaunchVideo';
+import LaunchVideo from '../LaunchVideo/LaunchVideo';
 
 const launchDetailsQuery = gql`
   query lpq($launchId: ID!) {
@@ -64,7 +64,6 @@ const LaunchDetails = () => {
                     className='textArea'
                     aria-label='empty textarea'
                     value={queryData.launch.details}
-                    // value={data.launch.details}
                     rowsMax={6}
                   />
                   <LaunchPhotos
@@ -72,7 +71,7 @@ const LaunchDetails = () => {
                       if (cv) return { imgPath: cv }
                     })}
                   />
-                  {/* <LaunchVideo videoLink={queryData.launch.links.video_link}/> */}
+                  <LaunchVideo videoLink={queryData.launch.links.video_link}/>
                 </React.Fragment>
               ) : null}
             </Container>
