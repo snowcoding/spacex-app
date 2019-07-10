@@ -5,10 +5,19 @@ import { Typography } from '@material-ui/core'
 import {
   LaunchContext,
   changePayloadWeight,
+  changePaginationOffset,
 } from '../../contexts/LaunchProvider'
+
+
 
 const PayloadWeight = () => {
   const [state, dispatch] = useContext(LaunchContext)
+
+  const onChange = rate => {
+    dispatch(changePayloadWeight(rate))
+    if (state.paginationOffset > 0) dispatch(changePaginationOffset(0))
+  }
+
   return (
     <div className='filter-payload-weight-container'>
       <Typography className='filter-weight-label'>Payload Weight</Typography>
@@ -19,7 +28,7 @@ const PayloadWeight = () => {
         initialRating={state.payloadWeight}
         fullSymbol='fas fa-weight-hanging'
         emptySymbol='fal fa-weight-hanging'
-        onChange={rate => dispatch(changePayloadWeight(rate))}
+        onChange={rate => onChange(rate)}
       />
     </div>
   )

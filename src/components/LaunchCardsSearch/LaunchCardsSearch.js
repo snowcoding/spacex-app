@@ -10,29 +10,33 @@ import MenuItem from '@material-ui/core/MenuItem'
 import CancelIcon from '@material-ui/icons/Cancel'
 import PropTypes from 'prop-types'
 import './launchCardsSearch.scss'
-import { LaunchContext, changeFilterCountries } from '../../contexts/LaunchProvider';
+import {
+  LaunchContext,
+  changeFilterCountries,
+  changePaginationOffset,
+} from '../../contexts/LaunchProvider'
 
 const suggestions = [
-  { type:'country', value: 'USA', label: 'United States' },
-  { type:'country', value: 'ARG', label: 'Argentina' },
-  { type:'country', value: 'BGD', label: 'Bangladesh' },
-  { type:'country', value: 'BGR', label: 'Bulgaria' },
-  { type:'country', value: 'CAN', label: 'Canada' },
-  { type:'country', value: 'FRA', label: 'France' },
-  { type:'country', value: 'HKG', label: 'Hong Kong' },
-  { type:'country', value: 'IDN', label: 'Indonesia' },
-  { type:'country', value: 'ISR', label: 'Israel' },
-  { type:'country', value: 'JPN', label: 'Japan' },
-  { type:'country', value: 'LUX', label: 'Luxembourg' },
-  { type:'country', value: 'MYS', label: 'Malaysia' },
-  { type:'country', value: 'QAT', label: 'Qatar' },
-  { type:'country', value: 'SAU', label: 'Saudi Arabia' },
-  { type:'country', value: 'KOR', label: 'South Korea' },
-  { type:'country', value: 'ESP', label: 'Spain' },
-  { type:'country', value: 'THA', label: 'Thailand' },
-  { type:'country', value: 'TKM', label: 'Turkmenistan' },
-  { type:'country', value: 'TWN', label: 'Taiwan' },
-  { type:'country', value: 'GBR', label: 'United Kingdom' },
+  { type: 'country', value: 'USA', label: 'United States' },
+  { type: 'country', value: 'ARG', label: 'Argentina' },
+  { type: 'country', value: 'BGD', label: 'Bangladesh' },
+  { type: 'country', value: 'BGR', label: 'Bulgaria' },
+  { type: 'country', value: 'CAN', label: 'Canada' },
+  { type: 'country', value: 'FRA', label: 'France' },
+  { type: 'country', value: 'HKG', label: 'Hong Kong' },
+  { type: 'country', value: 'IDN', label: 'Indonesia' },
+  { type: 'country', value: 'ISR', label: 'Israel' },
+  { type: 'country', value: 'JPN', label: 'Japan' },
+  { type: 'country', value: 'LUX', label: 'Luxembourg' },
+  { type: 'country', value: 'MYS', label: 'Malaysia' },
+  { type: 'country', value: 'QAT', label: 'Qatar' },
+  { type: 'country', value: 'SAU', label: 'Saudi Arabia' },
+  { type: 'country', value: 'KOR', label: 'South Korea' },
+  { type: 'country', value: 'ESP', label: 'Spain' },
+  { type: 'country', value: 'THA', label: 'Thailand' },
+  { type: 'country', value: 'TKM', label: 'Turkmenistan' },
+  { type: 'country', value: 'TWN', label: 'Taiwan' },
+  { type: 'country', value: 'GBR', label: 'United Kingdom' },
 ]
 
 const useStyles = makeStyles(theme => ({
@@ -282,6 +286,7 @@ export default function LaunchCardsSearch() {
   function handleChangeMulti(value) {
     setMulti(value)
     dispatch(changeFilterCountries(value))
+    if (state.paginationOffset > 0) dispatch(changePaginationOffset(0))
   }
 
   const selectStyles = {

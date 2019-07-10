@@ -2,7 +2,11 @@ import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import { Slider } from '@material-ui/core'
-import { LaunchContext, changeFilterDateRange} from '../../contexts/LaunchProvider'
+import {
+  LaunchContext,
+  changeFilterDateRange,
+  changePaginationOffset,
+} from '../../contexts/LaunchProvider'
 import './filterDateRange.scss'
 
 const useStyles = makeStyles({
@@ -45,6 +49,7 @@ export default function FilterDateRange() {
   const handleChange = (event, newValue) => {
     // console.log(newValue)
     dispatch(changeFilterDateRange(newValue))
+    if (state.paginationOffset > 0) dispatch(changePaginationOffset(0))
   }
 
   return (

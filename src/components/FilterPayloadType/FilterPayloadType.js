@@ -4,9 +4,13 @@ import FormControl from '@material-ui/core/FormControl'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
-import { LaunchContext, changePayload  }  from '../../contexts/LaunchProvider';
+import {
+  LaunchContext,
+  changePayload,
+  changePaginationOffset,
+} from '../../contexts/LaunchProvider'
 import './filterPayloadType.scss'
-import { Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
   formControl: {
     marginLeft: theme.spacing(2),
-    marginTop: 60
+    marginTop: 60,
   },
 }))
 
@@ -24,15 +28,13 @@ export default function FilterPayloadType() {
 
   const handleChange = name => event => {
     dispatch(changePayload(name, event.target.checked))
+    if (state.paginationOffset > 0) dispatch(changePaginationOffset(0))
   }
 
   return (
     <div className={classes.root}>
       <FormControl component='fieldset' className={classes.formControl}>
-      
-      <Typography className='filter-payload-label'>
-        Payload Type
-      </Typography>
+        <Typography className='filter-payload-label'>Payload Type</Typography>
         <FormGroup>
           <FormControlLabel
             control={
