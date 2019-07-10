@@ -4,11 +4,7 @@ import FormControl from '@material-ui/core/FormControl'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
-import {
-  LaunchContext,
-  changePayload,
-  changePaginationOffset,
-} from '../../contexts/LaunchProvider'
+import { LaunchContext, changePayload, changePaginationPage } from '../../contexts/LaunchProvider'
 import './filterPayloadType.scss'
 import { Typography } from '@material-ui/core'
 
@@ -28,7 +24,7 @@ export default function FilterPayloadType() {
 
   const handleChange = name => event => {
     dispatch(changePayload(name, event.target.checked))
-    if (state.paginationOffset > 0) dispatch(changePaginationOffset(0))
+    if (state.paginationPage > 0) dispatch(changePaginationPage(0))
   }
 
   return (

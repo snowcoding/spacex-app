@@ -1,11 +1,12 @@
 import React from 'react'
 import ExploreLaunches from './pages/ExploreLaunches'
 import ViewLaunches from './pages/ViewLaunches'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { colors, CssBaseline } from '@material-ui/core'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import Landing from './pages/Landing';
-import Header from './components/Header/Header';
+import Landing from './pages/Landing'
+import Header from './components/Header/Header'
+import ErrorBoundary from './utils/ErrorBoundry'
 
 const rockBitTheme = createMuiTheme({
   palette: {

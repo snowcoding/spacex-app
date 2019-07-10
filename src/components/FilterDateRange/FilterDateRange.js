@@ -5,7 +5,7 @@ import { Slider } from '@material-ui/core'
 import {
   LaunchContext,
   changeFilterDateRange,
-  changePaginationOffset,
+  changePaginationPage,
 } from '../../contexts/LaunchProvider'
 import './filterDateRange.scss'
 
@@ -47,9 +47,8 @@ export default function FilterDateRange() {
   const [state, dispatch] = useContext(LaunchContext)
 
   const handleChange = (event, newValue) => {
-    // console.log(newValue)
     dispatch(changeFilterDateRange(newValue))
-    if (state.paginationOffset > 0) dispatch(changePaginationOffset(0))
+    if (state.paginationPage > 0) dispatch(changePaginationPage(0))
   }
 
   return (

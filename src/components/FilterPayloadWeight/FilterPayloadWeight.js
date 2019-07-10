@@ -5,17 +5,15 @@ import { Typography } from '@material-ui/core'
 import {
   LaunchContext,
   changePayloadWeight,
-  changePaginationOffset,
+  changePaginationPage,
 } from '../../contexts/LaunchProvider'
-
-
 
 const PayloadWeight = () => {
   const [state, dispatch] = useContext(LaunchContext)
 
   const onChange = rate => {
     dispatch(changePayloadWeight(rate))
-    if (state.paginationOffset > 0) dispatch(changePaginationOffset(0))
+    if (state.paginationpPage > 0) dispatch(changePaginationPage(0))
   }
 
   return (

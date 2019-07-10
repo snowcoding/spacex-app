@@ -41,12 +41,6 @@ const reducer = (state, action) => {
         launchSort: action.launchSort,
       }
 
-    case 'changePaginationOffset':
-      return {
-        ...state,
-        paginationOffset: action.paginationOffset,
-      }
-
     case 'changeLaunchCardDetails':
       return {
         ...state,
@@ -54,10 +48,15 @@ const reducer = (state, action) => {
       }
 
       case 'changeFilterCountries':
-
       return {
         ...state,
         countries: action.countries === null ? [] : [...action.countries],
+      }  
+
+      case 'changePaginationPage':
+      return {
+        ...state,
+        paginationPage: action.paginationPage
       }  
 
     default:
@@ -108,13 +107,6 @@ export const changeLaunchSort = launchSort => {
   }
 }
 
-export const changePaginationOffset = paginationOffset => {
-  return {
-    type: 'changePaginationOffset',
-    paginationOffset,
-  }
-}
-
 export const changeLaunchCardDetails = cardId => {
   return {
     type: 'changeLaunchCardDetails',
@@ -129,17 +121,24 @@ export const changeFilterCountries = countries => {
   }
 }
 
+export const changePaginationPage = paginationPage => {
+  return {
+    type: 'changePaginationPage',
+    paginationPage,
+  }
+}
+
 const LaunchProvider = props => {
   const initialState = {
     filterDateRange: [2006, 2020],
     filterFailures: false,
     payload: { satellite: true, dragon: true },
     payloadWeight: 4,
-    launchesPerPage: 0,
+    launchesPerPage: 8,
     launchSort: '',
-    paginationOffset: 0,
     cardId: 0,
     countries: [],
+    paginationPage:0,
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)

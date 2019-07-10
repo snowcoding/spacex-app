@@ -13,7 +13,7 @@ import './launchCardsSearch.scss'
 import {
   LaunchContext,
   changeFilterCountries,
-  changePaginationOffset,
+  changePaginationPage,
 } from '../../contexts/LaunchProvider'
 
 const suggestions = [
@@ -41,9 +41,7 @@ const suggestions = [
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-    // height: 100,
-    width: '40%',
+    flexGrow: 2,
   },
   input: {
     display: 'flex',
@@ -286,7 +284,7 @@ export default function LaunchCardsSearch() {
   function handleChangeMulti(value) {
     setMulti(value)
     dispatch(changeFilterCountries(value))
-    if (state.paginationOffset > 0) dispatch(changePaginationOffset(0))
+    if (state.paginationPage > 0) dispatch(changePaginationPage(0))
   }
 
   const selectStyles = {

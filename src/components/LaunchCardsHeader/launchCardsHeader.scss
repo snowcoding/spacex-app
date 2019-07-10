@@ -4,7 +4,6 @@
     margin: 30px 0;
   }
 
-  .launch-cards-sort-per-page {
-    display: flex;
-    justify-content: flex-end;
+  div.launch-cards-header label + .MuiInput-formControl {
+    max-width: 85%;
   }

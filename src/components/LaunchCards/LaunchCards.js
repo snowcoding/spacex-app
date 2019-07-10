@@ -167,12 +167,13 @@ const LaunchCards = props => {
         //Pagination begins here
         //
         let paginationResults = filteredResults
+        const paginationOffset = state.launchesPerPage * state.paginationPage
 
         if (state.launchesPerPage !== 0) {
           paginationResults = filteredResults.filter((launch, ind) => {
             return (
-              ind >= state.paginationOffset &&
-              ind < state.launchesPerPage + state.paginationOffset
+              ind >= paginationOffset &&
+              ind < state.launchesPerPage + paginationOffset
             )
           })
         }

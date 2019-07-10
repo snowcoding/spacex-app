@@ -11,10 +11,8 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   formControl: {
-    minWidth: 172,
+    minWidth: 200,
     marginTop: 8,
-    marginLeft: 46,
-    marginRight: 43,
   },
   selectEmpty: {
     // marginTop: theme.spacing(2),
@@ -35,7 +33,7 @@ export default function LaunchSort() {
   }
 
   return (
-    <div>
+    <div className='launch-cards-sort'>
       <FormControl className={classes.formControl} >
         <Select
           value={state.launchSort}

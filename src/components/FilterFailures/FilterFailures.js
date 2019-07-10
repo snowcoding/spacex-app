@@ -5,7 +5,7 @@ import './filterFailures.scss'
 import {
   LaunchContext,
   changeFilterFailures,
-  changePaginationOffset,
+  changePaginationPage,
 } from '../../contexts/LaunchProvider'
 
 export default function FilterFailures() {
@@ -13,7 +13,7 @@ export default function FilterFailures() {
 
   const handleChange = event => {
     dispatch(changeFilterFailures(event.target.checked))
-    if (state.paginationOffset > 0) dispatch(changePaginationOffset(0))
+    if (state.paginationPage > 0) dispatch(changePaginationPage(0))
   }
 
   return (
