@@ -3,7 +3,12 @@ import { Grid, CircularProgress, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   spinner: {
-    minHeight: '100vh',
+    // minHeight: '100vh',
+    position:'absolute',
+    top:0,
+    bottom:0,
+    left:0,
+    right:0,
   },
 }))
 

@@ -12,7 +12,7 @@ import { Container, Typography } from '@material-ui/core'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
 import './launchChart.scss'
-import LoadingSpinner from '../LoadingSpinner.js/LoadingSpinner'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import RockLaunchLineChart from '../Charts/RockLaunchLineChart'
 
 const launchPastsQuery = gql`
@@ -52,10 +52,10 @@ export default class LaunchChart extends PureComponent {
     return (
       <Query query={launchPastsQuery}>
         {({ loading, error, data }) => {
-          if (loading) return <LoadingSpinner />
+          // if (loading) return <LoadingSpinner />
           if (error) return <p>Error :(</p>
 
-          const queryData = data.launchesPastResult.data
+          // const queryData = data.launchesPastResult.data
           console.log("Chart Data: ", data)
 
           /**
@@ -132,7 +132,7 @@ export default class LaunchChart extends PureComponent {
               else rocketTotalsByYear[chartObjindex].Falcon9++
             })
 
-            return [
+            return {
               rocketTotalsByYear,
               successRate,
               eccentricity,
@@ -140,10 +140,23 @@ export default class LaunchChart extends PureComponent {
               meanAnomaly,
               periapsisKm,
               periodMin,
-            ]
+            }
+          }
+          
+          // Todo: using temp data to populate x and y axis before data is 
+          const getTempChartData = () => {
+            return {
+              rocketTotalsByYear:[],
+              successRate:[],
+              eccentricity:[],
+              inclinationDeg:[],
+              meanAnomaly:[],
+              periapsisKm:[],
+              periodMin:[],
+            }
           }
 
-          let [
+          let {
             rocketTotalsByYear,
             successRate,
             eccentricity,
@@ -151,7 +164,7 @@ export default class LaunchChart extends PureComponent {
             meanAnomaly,
             periapsisKm,
             periodMin,
-          ] = getChartData(queryData)
+           } = loading ? getTempChartData() : getChartData(data.launchesPastResult.data)
 
           return (
             <Container className='launch-charts-container'>
@@ -182,37 +195,37 @@ export default class LaunchChart extends PureComponent {
                 <Typography variant='h5' color='primary' gutterBottom>
                   Success Rate
                 </Typography>
-                <RockLaunchLineChart yaxis={successRate.reverse()} />
+                <RockLaunchLineChart yaxis={successRate.reverse()} isLoading={loading}/>
               </div>
               <div className='rl-chart-container'>
                 <Typography variant='h5' color='primary' gutterBottom>
                   Orbital Eccentricity
                 </Typography>
-                <RockLaunchLineChart yaxis={eccentricity.reverse()} />
+                <RockLaunchLineChart yaxis={eccentricity.reverse()} isLoading={loading}/>
               </div>
               <div className='rl-chart-container'>
                 <Typography variant='h5' color='primary' gutterBottom>
                   Orbital Inclination (degrees)
                 </Typography>
-                <RockLaunchLineChart yaxis={inclinationDeg.reverse()} />
+                <RockLaunchLineChart yaxis={inclinationDeg.reverse()} isLoading={loading}/>
               </div>
               <div className='rl-chart-container'>
                 <Typography variant='h5' color='primary' gutterBottom>
                   Orbital Mean Anomaly
                 </Typography>
-                <RockLaunchLineChart yaxis={meanAnomaly.reverse()} />
+                <RockLaunchLineChart yaxis={meanAnomaly.reverse()} isLoading={loading}/>
               </div>
               <div className='rl-chart-container'>
                 <Typography variant='h5' color='primary' gutterBottom>
                   Periapsis (km)
                 </Typography>
-                <RockLaunchLineChart yaxis={periapsisKm.reverse()} />
+                <RockLaunchLineChart yaxis={periapsisKm.reverse()} isLoading={loading}/>
               </div>
               <div className='rl-chart-container'>
                 <Typography variant='h5' color='primary' gutterBottom>
                   Period (min)
                 </Typography>
-                <RockLaunchLineChart yaxis={periodMin.reverse()} />
+                <RockLaunchLineChart yaxis={periodMin.reverse()} isLoading={loading}/>
               </div>
             </Container>
           )

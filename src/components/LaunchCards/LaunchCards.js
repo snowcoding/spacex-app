@@ -5,7 +5,7 @@ import { gql } from 'apollo-boost'
 import LaunchCard from '../LaunchCard/LaunchCard'
 import { LaunchContext } from '../../contexts/LaunchProvider'
 import { withRouter } from 'react-router-dom'
-import LoadingSpinner from '../LoadingSpinner.js/LoadingSpinner'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import FilterResultsEmpty from '../FilterResultsEmpty/FilterResultsEmpty'
 
 const launchPastsQuery = gql`
@@ -35,7 +35,6 @@ const launchPastsQuery = gql`
   }
 `
 const LaunchCards = props => {
-  // const [queryData, setQueryData] = useState({})
   const [state] = useContext(LaunchContext)
   const { setFilteredResultsCount } = props
 
@@ -84,16 +83,11 @@ const LaunchCards = props => {
   return (
     <Query
       query={launchPastsQuery}
-      // onCompleted={data => {
-      //   setQueryData(data)
-      // }}
       variables={{ sort: sort, order: order }}
     >
       {({ loading, error, data }) => {
         if (loading) return <LoadingSpinner />
         if (error) return <p>Error :(</p>
-
-        console.log('Launch Cards Data: ', data)
 
         const isPayloadSatOrDragon = pl => {
           return (state.payload.satellite && pl.payload_type === 'Satellite') ||
