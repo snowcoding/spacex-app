@@ -7,7 +7,7 @@ const LaunchVideo = props => {
   const videoId = props.videoLink.match(patt)[0]
 
   const _onReady = event => {
-    event.target.pauseVideo()
+    // event.target.pauseVideo()
   }
   const opts = {
     width: '100%',

@@ -62,8 +62,7 @@ const LaunchDetails = () => {
 
   return (
     <Query query={launchDetailsQuery} variables={{ launchId: state.cardId }}>
-      {({ loading, error, data }) => {
-        if (loading) return <p>Loading...</p>
+      {({ error, data }) => {
         if (error) return <p>Error :(</p>
 
         return (
