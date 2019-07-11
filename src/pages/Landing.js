@@ -11,8 +11,8 @@ const Landing = () => {
           Welcome to Rock Launcher
         </Typography>
         <p className='landing-tagline'>
-          A small app that helps explore all the rocket launches of Space
-          X <i className='fal fa-space-shuttle' />
+          A small app that helps explore all the rocket launches of SpaceX{' '}
+          <i className='fal fa-space-shuttle' />
         </p>
         <div className='landing-link-container'>
           <span className='landing-link'>

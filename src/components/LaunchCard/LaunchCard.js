@@ -78,7 +78,6 @@ export default function LaunchCard(props) {
 
   const openLaunchCardDetails = () => {
     dispatch(changeLaunchCardDetails(launchId))
-    document.getElementById('launch-detail-id').style.width = '350px'
   }
 
   return (

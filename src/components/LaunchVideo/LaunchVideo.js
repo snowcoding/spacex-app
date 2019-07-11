@@ -1,5 +1,6 @@
 import React from 'react'
 import YouTube from 'react-youtube'
+import './LaunchVideo.scss'
 
 const LaunchVideo = props => {
   const patt = /[^=^/][\w\d-_]{9,13}/gi
@@ -16,7 +17,14 @@ const LaunchVideo = props => {
     },
   }
 
-  return <YouTube videoId={videoId} opts={opts} onReady={_onReady} />
+  return (
+    <YouTube
+      videoId={videoId}
+      opts={opts}
+      onReady={_onReady}
+      containerClassName='video-backdrop'
+    />
+  )
 }
 
 export default LaunchVideo

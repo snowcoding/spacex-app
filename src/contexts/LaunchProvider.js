@@ -45,6 +45,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cardId: action.cardId,
+        isLaunchDetailsOpen: true,
       }
 
       case 'changeFilterCountries':
@@ -59,6 +60,12 @@ const reducer = (state, action) => {
         paginationPage: action.paginationPage
       }  
 
+      case 'closedLaunchDetails':
+        return {
+          ...state,
+          isLaunchDetailsOpen: false
+        }  
+  
     default:
       throw new Error()
   }
@@ -128,6 +135,12 @@ export const changePaginationPage = paginationPage => {
   }
 }
 
+export const closedLaunchDetails = () => {
+  return {
+    type: 'closedLaunchDetails',
+  }
+}
+
 const LaunchProvider = props => {
   const initialState = {
     filterDateRange: [2006, 2020],
@@ -139,6 +152,7 @@ const LaunchProvider = props => {
     cardId: 0,
     countries: [],
     paginationPage:0,
+    isLaunchDetailsOpen: false,
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
