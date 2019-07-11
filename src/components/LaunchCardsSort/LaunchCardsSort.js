@@ -4,7 +4,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import { LaunchContext, changeLaunchSort } from '../../contexts/LaunchProvider';
-import { colors } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
