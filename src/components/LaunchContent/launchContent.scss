@@ -1,3 +1,7 @@
 .launch-content-container {
   display: flex;
+
+  .launch-cards{
+    min-height: 520px;
+  }
 }
