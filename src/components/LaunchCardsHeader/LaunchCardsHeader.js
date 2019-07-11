@@ -6,8 +6,8 @@ import './launchCardsHeader.scss'
 const LaunchCardsHeader = () => {
   return (
     <div className='launch-cards-header'>
-      <LaunchCardsSearch />
-      <LaunchCardsSort />
+      <div className='launch-cards-header-item search'><LaunchCardsSearch /></div>
+      <div className='launch-cards-header-item sort'><LaunchCardsSort /></div>
     </div>
   )
 }

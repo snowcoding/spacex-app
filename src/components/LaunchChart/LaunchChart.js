@@ -12,7 +12,6 @@ import { Container, Typography } from '@material-ui/core'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
 import './launchChart.scss'
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import RockLaunchLineChart from '../Charts/RockLaunchLineChart'
 
 const launchPastsQuery = gql`

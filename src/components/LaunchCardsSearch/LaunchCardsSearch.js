@@ -41,7 +41,7 @@ const suggestions = [
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 2,
+    flexGrow: 1,
   },
   input: {
     display: 'flex',
@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
   },
   chip: {
-    margin: theme.spacing(0.5, 0.25),
+    margin: theme.spacing(0.25, 0.25),
   },
   chipFocused: {
     backgroundColor: emphasize(
@@ -190,22 +190,22 @@ Placeholder.propTypes = {
   selectProps: PropTypes.object.isRequired,
 }
 
-function SingleValue(props) {
-  return (
-    <Typography
-      className={props.selectProps.classes.singleValue}
-      {...props.innerProps}
-    >
-      {props.children}
-    </Typography>
-  )
-}
+// function SingleValue(props) {
+//   return (
+//     <Typography
+//       className={props.selectProps.classes.singleValue}
+//       {...props.innerProps}
+//     >
+//       {props.children}
+//     </Typography>
+//   )
+// }
 
-SingleValue.propTypes = {
-  children: PropTypes.node,
-  innerProps: PropTypes.object,
-  selectProps: PropTypes.object.isRequired,
-}
+// SingleValue.propTypes = {
+//   children: PropTypes.node,
+//   innerProps: PropTypes.object,
+//   selectProps: PropTypes.object.isRequired,
+// }
 
 function ValueContainer(props) {
   return (
@@ -266,20 +266,20 @@ const components = {
   NoOptionsMessage,
   Option,
   Placeholder,
-  SingleValue,
+  // SingleValue,
   ValueContainer,
 }
 
 export default function LaunchCardsSearch() {
   const classes = useStyles()
   const theme = useTheme()
-  const [single, setSingle] = React.useState(null)
+  // const [single, setSingle] = React.useState(null)
   const [multi, setMulti] = React.useState(null)
   const [state, dispatch] = useContext(LaunchContext)
 
-  function handleChangeSingle(value) {
-    setSingle(value)
-  }
+  // function handleChangeSingle(value) {
+  //   setSingle(value)
+  // }
 
   function handleChangeMulti(value) {
     setMulti(value)
