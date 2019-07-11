@@ -62,7 +62,7 @@ const LaunchCards = props => {
   }
 
   useEffect(() => {
-    props.history.push({
+    props.history.replace({
       search: searchQueryString({
         daterange: dateRangeURL,
         showFailures: showFailureURL,
