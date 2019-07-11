@@ -4,7 +4,10 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Flag from 'react-world-flags'
 import './launchCard.scss'
-import { LaunchContext, changeLaunchCardDetails } from '../../contexts/LaunchProvider';
+import {
+  LaunchContext,
+  changeLaunchCardDetails,
+} from '../../contexts/LaunchProvider'
 
 const useStyles = makeStyles({
   card: {
@@ -26,6 +29,7 @@ const useStyles = makeStyles({
     height: 250,
   },
   flag: {
+    height: 27,
     marginLeft: 5,
     boxShadow: '1px 0px 4px #888',
   },
@@ -73,7 +77,7 @@ export default function LaunchCard(props) {
     Taiwan: 'TWN',
     'Saudi Arabia': 'SAU',
     'United Kingdom': 'GBR',
-    Malaysia: 'MAL',
+    Malaysia: 'MYS',
   }
 
   const openLaunchCardDetails = () => {
@@ -81,21 +85,24 @@ export default function LaunchCard(props) {
   }
 
   return (
-    <Card className={classes.card} onClick={openLaunchCardDetails}> 
+    <Card className={classes.card} onClick={openLaunchCardDetails}>
       <CardContent className={classes.cardContent}>
         <div className='flag-group'>
-          {uniqueNations
-            ? uniqueNations.map((nation, ind) =>
-                nation && flagCodeLUT[nation] ? (
-                  <Flag
-                    key={ind}
-                    className={classes.flag}
-                    code={flagCodeLUT[nation]}
-                    height='30'
-                  />
-                ) : null
+          {uniqueNations.length !== 0 ? (
+            uniqueNations.map((nation, ind) =>
+              nation && flagCodeLUT[nation] ? (
+                <Flag
+                  key={ind}
+                  className={classes.flag}
+                  code={flagCodeLUT[nation]}
+                />
+              ) : (
+                <Flag className={classes.flag} code={'USA'} />
               )
-            : null}
+            )
+          ) : (
+            <Flag className={classes.flag} code={'USA'} />
+          )}
         </div>
 
         <h2 className='mission-name'>

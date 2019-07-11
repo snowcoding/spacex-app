@@ -1,40 +1,55 @@
 @import '../../globals.scss';
-
-i.fas.fa-times-circle.failure {
-  color: red;
-}
-
-i.fas.fa-check-circle.pass {
-  color: green;
-}
-
-i.far.fa-space-shuttle,i.fal.fa-satellite,i.fal.fa-dragon {
-  color: #555;
-}
+$icon-color: #555;
 
 div.flag-group {
+  width: 100%;
   display: flex;
-  justify-content: 'space-around';
+  justify-content: space-around;
   margin-top: 5px;
-}
-
-div.launch-date, div.rocket-row {
-  font-size: 1.3em;
-  align-self: flex-start;
-}
-
-div.payload {
-  font-size: 2em;
-}
-
-span.date {
-  margin-left: 10px;
-}
-
-span.rocket-text {
-  margin-left: 7px;
 }
 
 .mission-name {
   color: $mui-primary;
+}
+
+div.launch-date {
+  font-size: 1.3em;
+  align-self: flex-start;
+
+  i.fas.fa-times-circle.failure {
+    color: red;
+  }
+
+  i.fas.fa-check-circle.pass {
+    color: green;
+  }
+
+  .date {
+    margin-left: 10px;
+  }
+}
+
+div.rocket-row {
+  font-size: 1.3em;
+  align-self: flex-start;
+
+  i.far.fa-space-shuttle {
+    color: $icon-color;
+  }
+
+  .rocket-text {
+    margin-left: 7px;
+  }
+}
+
+div.payload {
+  font-size: 2em;
+
+  i.fal.fa-satellite {
+    color: $icon-color;
+  }
+
+  i.fal.fa-dragon {
+    color: $icon-color;
+  }
 }
