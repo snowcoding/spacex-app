@@ -2,8 +2,17 @@
     display: flex;
     justify-content: space-between;
     margin: 30px 0;
+    padding-bottom: 10px;
+
+    .launch-cards-header-item.search{
+      flex-basis: 50%;
+    }
+
+    .launch-cards-header-item.sort{
+      flex-basis: 25%;
+      padding-bottom: 2px;
+    }
+
   }
 
-  div.launch-cards-header label + .MuiInput-formControl {
-    max-width: 85%;
-  }
+  

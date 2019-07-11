@@ -4,22 +4,17 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import { LaunchContext, changeLaunchSort } from '../../contexts/LaunchProvider';
+import { colors } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
   },
-  formControl: {
-    minWidth: 200,
-    marginTop: 8,
-  },
   selectEmpty: {
-    // marginTop: theme.spacing(2),
-    marginTop: 12,
+    marginTop: 18,
   },
   menuItem: {
-    display: 'flex',
     justifyContent: 'space-evenly'
   }
 }))
@@ -34,7 +29,7 @@ export default function LaunchSort() {
 
   return (
     <div className='launch-cards-sort'>
-      <FormControl className={classes.formControl} >
+      <FormControl>
         <Select
           value={state.launchSort}
           onChange={handleChange}
@@ -43,7 +38,7 @@ export default function LaunchSort() {
           className={classes.selectEmpty}
         >
           <MenuItem value={''} className={classes.menuItem}>
-            <em>Sort by...</em>
+            <em>Sort by Mission or Year ...</em>
           </MenuItem>
           <MenuItem value={'mission_name-ASC'} className={classes.menuItem}>
             <span> Mission Name</span>
