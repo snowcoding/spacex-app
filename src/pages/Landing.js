@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Typography } from '@material-ui/core'
+import { Container, Typography, Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import './Landing.scss'
 
@@ -15,11 +15,15 @@ const Landing = () => {
           <i className='fal fa-space-shuttle' />
         </p>
         <div className='landing-link-container'>
-          <span className='landing-link'>
-            <Link to='/launches-over-time'>Launches over time</Link>
+          <span className='landing-button'>
+            <Link to='/explore-launches' className='landing-link'>
+              <Button variant='contained' color='primary'>Explore Launches</Button>
+            </Link>
           </span>
-          <span className='landing-link'>
-            <Link to='/explore-launches'>Explore Launches</Link>
+          <span className='landing-button'>
+            <Link to='/launches-over-time' className='landing-link'>
+              <Button variant='contained'>Launches over time</Button>
+            </Link>
           </span>
         </div>
       </Container>
