@@ -1,35 +1,41 @@
 @import '../../globals.scss';
+@mixin header-text {
+  font-size: 22px;
+  padding-top: 9px;
+  color: #395c6d;
+}
 
 div.header {
   padding: 5px 2%;
   display: flex;
   justify-content: space-between;
   background-color: $rockbits-primary;
+
+  .header-left {
+    display: flex;
+    justify-content: flex-start;
+
+    .logo {
+      margin-bottom: 5px;
+    }    
+  }
+
+  .text {
+    @include header-text;
+
+    .header-link {
+      text-decoration: none;
+    }
+  }
+
+  .path {
+    @include header-text;
+    margin-left: 10px;
+  }
+  
+  .account-icon {
+    margin-top: 5px;
+  }
 }
 
-div.header-left {
-  display: flex;
-  justify-content: flex-start;
-}
 
-div.header-left div.text {
-  font-size: 22px;
-  padding-top: 9px;
-  color: #395c6d;
-}
-
-.header-link {
-  text-decoration:none;
-}
-
-div.text.path {
-  margin-left: 10px;
-}
-
-div.header-left div.logo {
-  margin-bottom: 5px;
-}
-
-div.header img.account-icon {
-  margin-top: 5px;
-}

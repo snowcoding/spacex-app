@@ -3,14 +3,15 @@
 .filter-payload-weight-container {
   margin-top: 60px;
   margin-left: 16px;
+  
+  .filter-payload-weight {
+    color: $mui-primary;
+    font-size: 1.6em;
+    margin-top: 8px;
+  }
+  
+  .filter-weight-label {
+    color: $mui-primary;
+  }
 }
 
-.filter-payload-weight {
-  color: $mui-primary;
-  font-size: 1.6em;
-  margin-top: 8px;
-}
-
-.filter-weight-label {
-  color: $mui-primary;
-}
