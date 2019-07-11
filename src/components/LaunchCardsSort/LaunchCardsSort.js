@@ -39,19 +39,19 @@ export default function LaunchSort() {
           <MenuItem value={''} className={classes.menuItem}>
             <em>Sort by Mission or Year ...</em>
           </MenuItem>
-          <MenuItem value={'mission_name-ASC'} className={classes.menuItem}>
+          <MenuItem value={'mission_name-DESC'} className={classes.menuItem}>
             <span> Mission Name</span>
             <i className='fal fa-sort-alpha-up' />
           </MenuItem>
-          <MenuItem value={'mission_name-DESC'} className={classes.menuItem}>
+          <MenuItem value={'mission_name-ASC'} className={classes.menuItem}>
             <span>Mission Name</span>
             <i className='fal fa-sort-alpha-down' />
           </MenuItem>
-          <MenuItem value={'launch_year-ASC'} className={classes.menuItem}>
+          <MenuItem value={'launch_year-DESC'} className={classes.menuItem}>
             <span>Launch Date</span>
             <i className='fal fa-sort-numeric-up' />
           </MenuItem>
-          <MenuItem value={'launch_year-DESC'} className={classes.menuItem}>
+          <MenuItem value={'launch_year-ASC'} className={classes.menuItem}>
             <span>Launch Date</span>
             <i className='fal fa-sort-numeric-down' />
           </MenuItem>
