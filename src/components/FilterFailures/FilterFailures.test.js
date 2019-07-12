@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import FilterFailures from './FilterFailures'
-import Apollo from '../Apollo/Apollo'
 import LaunchProvider from '../../contexts/LaunchProvider'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { colors } from '@material-ui/core';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { colors } from '@material-ui/core'
 
 it('renders without crashing', () => {
   const rockBitTheme = createMuiTheme({
@@ -16,13 +15,11 @@ it('renders without crashing', () => {
 
   const div = document.createElement('div')
   ReactDOM.render(
-    <Apollo>
-      <MuiThemeProvider theme={rockBitTheme}>
-        <LaunchProvider>
+    <MuiThemeProvider theme={rockBitTheme}>
+      <LaunchProvider>
         <FilterFailures />
-        </LaunchProvider>
-      </MuiThemeProvider>
-    </Apollo>,
+      </LaunchProvider>
+    </MuiThemeProvider>,
     div
   )
   ReactDOM.unmountComponentAtNode(div)

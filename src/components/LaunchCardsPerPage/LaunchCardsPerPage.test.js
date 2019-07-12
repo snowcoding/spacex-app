@@ -8,13 +8,13 @@ import LaunchProvider from '../../contexts/LaunchProvider'
 it('renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(
-    <Router>
-      <Apollo>
+    // <Router>
+    //   <Apollo>
         <LaunchProvider>
           <LaunchCardsPerPage />
-        </LaunchProvider>
-      </Apollo>
-    </Router>,
+        </LaunchProvider>,
+    //   </Apollo>
+    // </Router>,
     div
   )
   ReactDOM.unmountComponentAtNode(div)
