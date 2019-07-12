@@ -1,0 +1,13 @@
+@import '../../globals.scss';
+
+.y-axis-label{
+    display:flex;
+    align-items: center;
+
+    .fas.fa-info-circle{
+        font-size: 1.4em;
+        margin-left: 12px;
+        color:$mui-primary;
+        padding-top:5px;
+    }
+}

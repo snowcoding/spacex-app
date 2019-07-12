@@ -2,13 +2,22 @@
 
 exports[`snapshot test Y axis Label of Chart 1`] = `
 <div>
-  <h5
-    aria-haspopup="true"
-    className="MuiTypography-root MuiTypography-h5 MuiTypography-colorPrimary"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    title
-  </h5>
+  <a>
+    <div
+      className="y-axis-label"
+    >
+      <h5
+        className="MuiTypography-root title MuiTypography-h5 MuiTypography-colorPrimary"
+      >
+        title
+      </h5>
+      <i
+        aria-haspopup="true"
+        className="fas fa-info-circle"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+    </div>
+  </a>
 </div>
 `;

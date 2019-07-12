@@ -3,6 +3,7 @@ import Popover from '@material-ui/core/Popover'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { colors } from '@material-ui/core'
+import './chartYaxisLabel.scss'
 
 const useStyles = makeStyles(theme => ({
   popOverText: {
@@ -37,21 +38,19 @@ export default function ChartYaxisLabel(props) {
 
   return (
     <div>
-      <Typography
-        variant='h5'
-        color='primary'
-        aria-owns={open ? 'mouse-over-popover' : undefined}
-        aria-haspopup='true'
-        onMouseEnter={handlePopoverOpen}
-        onMouseLeave={handlePopoverClose}
-      >
-        {yAxisLabel.title}
-      </Typography>
-      {Object.values(yAxisLabel).includes('Launches Per Year') ? (
-        <Typography color='primary' variant='caption'>
-          Hover for more info
+      <a id={yAxisLabel.anchor}>
+      <div className='y-axis-label'>
+        <Typography variant='h5' color='primary' className='title'>
+          {yAxisLabel.title}
         </Typography>
-      ) : null}
+        <i
+          className='fas fa-info-circle'
+          aria-owns={open ? 'mouse-over-popover' : undefined}
+          aria-haspopup='true'
+          onMouseEnter={handlePopoverOpen}
+          onMouseLeave={handlePopoverClose}
+        />
+      </div></a>
       <Popover
         id='mouse-over-popover'
         className={classes.popover}
@@ -62,11 +61,11 @@ export default function ChartYaxisLabel(props) {
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'left',
+          horizontal: 'right',
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'right',
+          horizontal: 'left',
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus

@@ -1,18 +1,19 @@
-import React from 'react'
-
 export const yAxisLabelPopover = {
   launchPerYear: {
     title: 'Launches Per Year',
+    anchor: 'launch-per-year',
     popover:
       "This chart shows SpaceX's total launches from 2006 to 2019 for each Rocket",
   },
   successRate: {
     title: 'Success Rate',
+    anchor: 'success-rate',
     popover:
       "The success rate of the launches have been nearly perfect (~97%) since SpaceX's 7th launch",
   },
   orbitEccen: {
     title: 'Orbital Eccentricity',
+    anchor: 'eccentricity',
     popover:
       'The orbital eccentricity of an astronomical object is a dimensionless parameter that determines the amount by which its orbit around another body deviates from a perfect circle.',
     link: () => {
@@ -29,6 +30,7 @@ export const yAxisLabelPopover = {
   },
   orbitInclin: {
     title: 'Orbital Inclination (degrees)',
+    anchor: 'inclination',
     popover:
       "Orbital inclination measures the tilt of an object's orbit around a celestial body. It is expressed as the angle between a reference plane and the orbital plane. ",
     link: () => {
@@ -45,6 +47,7 @@ export const yAxisLabelPopover = {
   },
   orbitMeanAn: {
     title: 'Orbital Mean Anomaly',
+    anchor: 'mean-anomaly',
     popover:
       "In celestial mechanics, the mean anomaly is the fraction of an elliptical orbit's period that has elapsed since the orbiting body passed periapsis, expressed as an angle.",
     link: () => {
@@ -61,7 +64,8 @@ export const yAxisLabelPopover = {
   },
   orbitPeriap: {
     title: 'Orbital Periapsis (km)',
-    popover:
+    anchor: 'periapsis',
+    popover: 
       'An argument of periapsis of 0° means that the orbiting body will be at its closest approach to the central body at the same moment that it crosses the plane of reference.',
     link: () => {
       return (
@@ -77,6 +81,7 @@ export const yAxisLabelPopover = {
   },
   period: {
     title: 'Orbital Period (min)',
+    anchor: 'period',
     popover:
       'The orbital period is the time a given astronomical object takes to complete one orbit around another object.  ',
     link: () => {

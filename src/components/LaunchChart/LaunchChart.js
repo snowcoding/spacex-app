@@ -99,10 +99,10 @@ export default class LaunchChart extends PureComponent {
                 <XAxis dataKey='year' />
                 <YAxis />
                 <Tooltip />
-                <Legend />
-                <Bar dataKey='Falcon1' stackId='a' fill='#269fd8' />
-                <Bar dataKey='Falcon9' stackId='a' fill='#2b7da6' />
-                <Bar dataKey='FalconHeavy' stackId='a' fill='#304959' />
+                <Legend align='right' verticalAlign='top'/>
+                <Bar dataKey='Falcon1' stackId='a' fill='#43ffca' />
+                <Bar dataKey='Falcon9' stackId='a' fill='#607d8b' />
+                <Bar dataKey='FalconHeavy' stackId='a' fill='#0b0bff' />
               </BarChart>
               <div className='rl-chart-container'>
                 <ChartYaxisLabel yAxisLabel={yAxisLabelPopover.successRate} />

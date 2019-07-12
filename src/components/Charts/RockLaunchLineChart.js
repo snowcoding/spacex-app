@@ -4,7 +4,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   LineChart,
   Line,
 } from 'recharts'
@@ -30,10 +29,9 @@ const RockLaunchLineChart = props => {
         <XAxis dataKey='launchNum' />
         <YAxis />
         <Tooltip />
-        <Legend />
-        <Line dataKey='Falcon 1' stackId='a' fill='#269fd8' />
-        <Line dataKey='Falcon 9' stackId='a' fill='#2b7da6' />
-        <Line dataKey='Falcon Heavy' stackId='a' fill='#304959' />
+        <Line dataKey='Falcon 1' stackId='a' fill='#43ffca' dot={{ stroke: '#43ffca', strokeWidth: 2.5 }}/>
+        <Line dataKey='Falcon 9' stackId='a' fill='#607d8b' dot={{ stroke: '#607d8b', strokeWidth: 2.5 }}/>
+        <Line dataKey='Falcon Heavy' stackId='a' fill='#0b0bff' dot={{ stroke: '#0b0bff', strokeWidth: 2.5 }}/>
       </LineChart>
     </div>
   )
