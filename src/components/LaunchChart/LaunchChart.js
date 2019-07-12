@@ -8,11 +8,13 @@ import {
   Tooltip,
   Legend,
 } from 'recharts'
-import { Container, Typography } from '@material-ui/core'
+import { Container } from '@material-ui/core'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
 import './launchChart.scss'
 import RockLaunchLineChart from '../Charts/RockLaunchLineChart'
+import ChartYaxisLabel from '../ChartYaxisLabel/ChartYaxisLabel'
+import { yAxisLabelPopover, getChartData } from './utils'
 
 const launchPastsQuery = gql`
   query lpq {
@@ -55,103 +57,18 @@ export default class LaunchChart extends PureComponent {
           if (error) return <p>Error :(</p>
 
           // const queryData = data.launchesPastResult.data
-          console.log("Chart Data: ", data)
+          console.log('Chart Data: ', data)
 
-          /**
-           * This function will create the data needed for the chart.
-           * It will produce an array of objects.
-           *
-           * @param {Object} queryData
-           */
-          const getChartData = queryData => {
-            //   Create a date Array with all dates from query results
-            const dataYears = Array.from(new Array(14), (x, i) =>
-              String(i + 2006)
-            )
-
-            // Create object that will hold each year's totals
-            let rocketTotalsByYear = dataYears.map(cv => {
-              return {
-                year: cv,
-                Falcon9: 0,
-                FalconHeavy: 0,
-                Falcon1: 0,
-              }
-            })
-
-            const successRate = []
-            const eccentricity = []
-            const inclinationDeg = []
-            const meanAnomaly = []
-            const periapsisKm = []
-            const periodMin = []
-
-            // For each year, increment the corresponding rocket's total
-            queryData.forEach(cv => {
-              let rocket = cv.rocket.rocket_name
-              successRate.push({
-                launchNum: `#${cv.id}`,
-                [cv.rocket.rocket_name]: cv.rocket.rocket.success_rate_pct,
-              })
-              eccentricity.push({
-                launchNum: `#${cv.id}`,
-                [cv.rocket.rocket_name]:
-                  cv.rocket.second_stage.payloads[0].orbit_params.eccentricity,
-              })
-              inclinationDeg.push({
-                launchNum: `#${cv.id}`,
-                [cv.rocket.rocket_name]:
-                  cv.rocket.second_stage.payloads[0].orbit_params
-                    .inclination_deg,
-              })
-              meanAnomaly.push({
-                launchNum: `#${cv.id}`,
-                [cv.rocket.rocket_name]:
-                  cv.rocket.second_stage.payloads[0].orbit_params.mean_anomaly,
-              })
-              periapsisKm.push({
-                launchNum: `#${cv.id}`,
-                [cv.rocket.rocket_name]:
-                  cv.rocket.second_stage.payloads[0].orbit_params.periapsis_km,
-              })
-              periodMin.push({
-                launchNum: `#${cv.id}`,
-                [cv.rocket.rocket_name]:
-                  cv.rocket.second_stage.payloads[0].orbit_params.period_min,
-              })
-
-              let chartObjindex = rocketTotalsByYear.findIndex(
-                el => el.year === cv.launch_year
-              )
-
-              if (rocket === 'Falcon 1')
-                rocketTotalsByYear[chartObjindex].Falcon1++
-              else if (rocket === 'Falcon Heavy')
-                rocketTotalsByYear[chartObjindex].FalconHeavy++
-              else rocketTotalsByYear[chartObjindex].Falcon9++
-            })
-
-            return {
-              rocketTotalsByYear,
-              successRate,
-              eccentricity,
-              inclinationDeg,
-              meanAnomaly,
-              periapsisKm,
-              periodMin,
-            }
-          }
-          
-          // Todo: using temp data to populate x and y axis before data is 
+          // Todo: using temp data to populate x and y axis before data is returned from GQL
           const getTempChartData = () => {
             return {
-              rocketTotalsByYear:[],
-              successRate:[],
-              eccentricity:[],
-              inclinationDeg:[],
-              meanAnomaly:[],
-              periapsisKm:[],
-              periodMin:[],
+              rocketTotalsByYear: [],
+              successRate: [],
+              eccentricity: [],
+              inclinationDeg: [],
+              meanAnomaly: [],
+              periapsisKm: [],
+              periodMin: [],
             }
           }
 
@@ -163,13 +80,13 @@ export default class LaunchChart extends PureComponent {
             meanAnomaly,
             periapsisKm,
             periodMin,
-           } = loading ? getTempChartData() : getChartData(data.launchesPastResult.data)
+          } = loading
+            ? getTempChartData()
+            : getChartData(data.launchesPastResult.data)
 
           return (
             <Container className='launch-charts-container'>
-              <Typography variant='h5' color='primary' gutterBottom>
-                Launches Per Year
-              </Typography>
+              <ChartYaxisLabel yAxisLabel={yAxisLabelPopover.launchPerYear} />
               <BarChart
                 width={1200}
                 height={300}
@@ -191,40 +108,46 @@ export default class LaunchChart extends PureComponent {
                 <Bar dataKey='FalconHeavy' stackId='a' fill='#304959' />
               </BarChart>
               <div className='rl-chart-container'>
-                <Typography variant='h5' color='primary' gutterBottom>
-                  Success Rate
-                </Typography>
-                <RockLaunchLineChart yaxis={successRate.reverse()} isLoading={loading}/>
+                <ChartYaxisLabel yAxisLabel={yAxisLabelPopover.successRate} />
+                <RockLaunchLineChart
+                  yaxis={successRate.reverse()}
+                  isLoading={loading}
+                />
               </div>
               <div className='rl-chart-container'>
-                <Typography variant='h5' color='primary' gutterBottom>
-                  Orbital Eccentricity
-                </Typography>
-                <RockLaunchLineChart yaxis={eccentricity.reverse()} isLoading={loading}/>
+                <ChartYaxisLabel yAxisLabel={yAxisLabelPopover.orbitEccen} />
+                <RockLaunchLineChart
+                  yaxis={eccentricity.reverse()}
+                  isLoading={loading}
+                />
               </div>
               <div className='rl-chart-container'>
-                <Typography variant='h5' color='primary' gutterBottom>
-                  Orbital Inclination (degrees)
-                </Typography>
-                <RockLaunchLineChart yaxis={inclinationDeg.reverse()} isLoading={loading}/>
+                <ChartYaxisLabel yAxisLabel={yAxisLabelPopover.orbitInclin} />
+                <RockLaunchLineChart
+                  yaxis={inclinationDeg.reverse()}
+                  isLoading={loading}
+                />
               </div>
               <div className='rl-chart-container'>
-                <Typography variant='h5' color='primary' gutterBottom>
-                  Orbital Mean Anomaly
-                </Typography>
-                <RockLaunchLineChart yaxis={meanAnomaly.reverse()} isLoading={loading}/>
+                <ChartYaxisLabel yAxisLabel={yAxisLabelPopover.orbitMeanAn} />
+                <RockLaunchLineChart
+                  yaxis={meanAnomaly.reverse()}
+                  isLoading={loading}
+                />
               </div>
               <div className='rl-chart-container'>
-                <Typography variant='h5' color='primary' gutterBottom>
-                  Periapsis (km)
-                </Typography>
-                <RockLaunchLineChart yaxis={periapsisKm.reverse()} isLoading={loading}/>
+                <ChartYaxisLabel yAxisLabel={yAxisLabelPopover.orbitPeriap} />
+                <RockLaunchLineChart
+                  yaxis={periapsisKm.reverse()}
+                  isLoading={loading}
+                />
               </div>
               <div className='rl-chart-container'>
-                <Typography variant='h5' color='primary' gutterBottom>
-                  Period (min)
-                </Typography>
-                <RockLaunchLineChart yaxis={periodMin.reverse()} isLoading={loading}/>
+                <ChartYaxisLabel yAxisLabel={yAxisLabelPopover.period} />
+                <RockLaunchLineChart
+                  yaxis={periodMin.reverse()}
+                  isLoading={loading}
+                />
               </div>
             </Container>
           )
