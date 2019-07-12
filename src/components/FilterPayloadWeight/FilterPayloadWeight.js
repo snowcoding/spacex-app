@@ -11,14 +11,15 @@ import {
 const PayloadWeight = () => {
   const [state, dispatch] = useContext(LaunchContext)
 
+  const rate = state.payloadWeight
   const onChange = rate => {
     dispatch(changePayloadWeight(rate))
-    if (state.paginationpPage > 0) dispatch(changePaginationPage(0))
+    if (state.paginationPage > 0) dispatch(changePaginationPage(0))
   }
 
   return (
     <div className='filter-payload-weight-container'>
-      <Typography className='filter-weight-label'>Payload Weight</Typography>
+      <Typography className='filter-weight-label'>Payload Weight { rate === 4 ? '(All)' : `(${rate})`}</Typography>
       <Rating
         className='filter-payload-weight'
         start={0}

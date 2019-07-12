@@ -21,6 +21,9 @@ const LaunchCardsFooter = props => {
     dispatch(changeLaunchesPerPage(Number(e.target.value)))
   }
 
+  // Makes certain that the current page does not exceed total number of pages
+  const currentPage = Math.min(Math.floor(filteredResultsCount/Number(state.launchesPerPage)), state.paginationPage)
+
   return (
     <div className='launch-cards-footer'>
       <Table>
@@ -31,7 +34,7 @@ const LaunchCardsFooter = props => {
               colSpan={3}
               count={filteredResultsCount}
               rowsPerPage={Number(state.launchesPerPage)}
-              page={state.paginationPage}
+              page={currentPage}
               SelectProps={{
                 inputProps: { 'aria-label': 'Cards per page' },
                 native: true,

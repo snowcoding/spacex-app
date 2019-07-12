@@ -56,9 +56,6 @@ export default class LaunchChart extends PureComponent {
           // if (loading) return <LoadingSpinner />
           if (error) return <p>Error :(</p>
 
-          // const queryData = data.launchesPastResult.data
-          console.log('Chart Data: ', data)
-
           // Todo: using temp data to populate x and y axis before data is returned from GQL
           const getTempChartData = () => {
             return {

@@ -85,7 +85,7 @@ export default function LaunchCard(props) {
                   code={flagCodeLUT[nation]}
                 />
               ) : (
-                <Flag className={classes.flag} code={'USA'} />
+                <Flag key={`${ind}+${launchId}`} className={classes.flag} code={'USA'} />
               )
             )
           ) : (
