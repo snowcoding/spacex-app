@@ -19,7 +19,7 @@ GraphQL based [client](https://rocklauncher.vimalshah77.now.sh) for desktops tha
 
 ## Device Support
 
-- Currently the experience is best on a desktop with a minimum of 1024x768
+- Currently the experience is best on a desktop with a resolution of 1920x1080.
 
 ## Installing and Running
 
