@@ -8,21 +8,25 @@ const Landing = () => {
     <React.Fragment>
       <Container className='landing-container'>
         <Typography variant='h3' className='landing-title'>
-          Welcome to Rock Launcher
+          Welcome to RockLauncher
         </Typography>
         <p className='landing-tagline'>
-          A small app that helps explore all the rocket launches of SpaceX{' '}
-          <i className='fal fa-space-shuttle' />
+          A dashboard to analyze SpaceX Rocket Launches
         </p>
         <div className='landing-link-container'>
           <span className='landing-button'>
             <Link to='/explore-launches' className='landing-link'>
-              <Button variant='contained' color='primary'>Explore Launches</Button>
+              <Button className='explore' variant='contained' color='primary'>
+                <div>Explore Launches</div>
+                <i className="fal fa-space-shuttle fa-rotate-270"></i>
+              </Button>
             </Link>
           </span>
           <span className='landing-button'>
             <Link to='/launches-over-time' className='landing-link'>
-              <Button variant='contained'>Launches over time</Button>
+              <Button className='graph' variant='contained'>
+                <div>Graphs of Launches</div><i className='fal fa-chart-bar' />
+              </Button>
             </Link>
           </span>
         </div>

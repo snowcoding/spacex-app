@@ -11,28 +11,37 @@
   }
 
   .landing-tagline {
-    font-size: 1.5em;
+    font-size: 1.2em;
     width: 400px;
     text-align: center;
   }
 
-  .landing-link-container{
-    margin-top: 40px;
-  }
+  .landing-link-container {
+    width: 100%;
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-evenly;
 
-  .landing-button {
-    margin-left: 30px;
-    font-size: 1.2em;
+    .landing-button {
+      // margin-left: 30px;
+      font-size: 1.2em;
 
-    .landing-link{
-      text-decoration: none;
+      .landing-link {
+        text-decoration: none;
+
+        .graph {
+          color: #3a6479;
+          background-color: $rockbits-primary;
+          display:flex;
+          width: 120%;
+          justify-content: space-evenly;
+        }
+        .explore {
+          display:flex;
+          width: 120%;
+          justify-content: space-evenly;
+        }
+      }
     }
   }
-  
 }
-
-
-
-
-
-
