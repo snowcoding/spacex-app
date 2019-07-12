@@ -10,6 +10,7 @@ div.flag-group {
 
 .mission-name {
   color: $mui-primary;
+  margin: 0 auto;
 }
 
 div.launch-date {
@@ -32,6 +33,7 @@ div.launch-date {
 div.rocket-row {
   font-size: 1.3em;
   align-self: flex-start;
+  margin-bottom: 5px;
 
   i.far.fa-space-shuttle {
     color: $icon-color;
@@ -44,6 +46,9 @@ div.rocket-row {
 
 div.payload {
   font-size: 2em;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 
   i.fal.fa-satellite {
     color: $icon-color;

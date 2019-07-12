@@ -41,18 +41,6 @@ export default function LaunchCard(props) {
 
   const { rocketName, payloads, missionName, date, success, launchId } = props
 
-  const isPayloadSatellite = payloads
-    ? payloads.some(pl => {
-        return pl.payload_type === 'Satellite'
-      })
-    : false
-
-  const isPayloadDragon = payloads
-    ? payloads.some(pl => {
-        return pl.payload_type.includes('Dragon')
-      })
-    : false
-
   const uniqueNations = payloads
     ? [...new Set(payloads.map(pl => pl.nationality))]
     : []
@@ -92,7 +80,7 @@ export default function LaunchCard(props) {
             uniqueNations.map((nation, ind) =>
               nation && flagCodeLUT[nation] ? (
                 <Flag
-                  key={ind}
+                  key={`${ind}+${launchId}`}
                   className={classes.flag}
                   code={flagCodeLUT[nation]}
                 />
@@ -124,8 +112,19 @@ export default function LaunchCard(props) {
         </div>
 
         <div className='payload'>
-          {isPayloadSatellite ? <i className='fal fa-satellite' /> : null}
-          {isPayloadDragon ? <i className='fal fa-dragon' /> : null}
+          {/* Map through the payloads array, if it has more than 4 items, 
+          render all satellites, otherwise, render the appropriate icon */}
+          {payloads && payloads.length > 3
+            ? [0, 1, 2, 3].map((cv, ind) => (
+                <i key={`${ind}+${launchId}`} className='fal fa-satellite' />
+              ))
+            : payloads.map((pl, ind) =>
+                pl.payload_type === 'Satellite' ? (
+                  <i key={`${ind}+${launchId}`} className='fal fa-satellite' />
+                ) : (
+                  <i key={`${ind}+${launchId}`} className='fal fa-dragon' />
+                )
+              )}
         </div>
       </CardContent>
     </Card>
