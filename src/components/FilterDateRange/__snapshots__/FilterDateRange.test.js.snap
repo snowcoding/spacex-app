@@ -1,0 +1,353 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test Date Range Filter 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <p
+    className="MuiTypography-root date-range-label MuiTypography-body1 MuiTypography-gutterBottom"
+    id="range-slider"
+  >
+    Date
+  </p>
+  <span
+    className="MuiSlider-root MuiSlider-marked"
+    onMouseDown={[Function]}
+  >
+    <span
+      className="MuiSlider-rail"
+    />
+    <span
+      className="MuiSlider-track"
+      style={
+        Object {
+          "left": "0%",
+          "width": "100%",
+        }
+      }
+    />
+    <input
+      type="hidden"
+      value="2006,2020"
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "0%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "0%",
+        }
+      }
+    >
+      2006
+    </span>
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "7.142857142857143%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "7.142857142857143%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "14.285714285714286%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "14.285714285714286%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "21.428571428571427%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "21.428571428571427%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "28.571428571428573%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "28.571428571428573%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "35.714285714285715%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "35.714285714285715%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "42.857142857142854%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "42.857142857142854%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "50%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "50%",
+        }
+      }
+    >
+      2013
+    </span>
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "57.142857142857146%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "57.142857142857146%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "64.28571428571429%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "64.28571428571429%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "71.42857142857143%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "71.42857142857143%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "78.57142857142857%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "78.57142857142857%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "85.71428571428571%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "85.71428571428571%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "92.85714285714286%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "92.85714285714286%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-mark MuiSlider-markActive"
+      style={
+        Object {
+          "left": "100%",
+        }
+      }
+    />
+    <span
+      className="MuiSlider-markLabel MuiSlider-markLabelActive"
+      style={
+        Object {
+          "left": "100%",
+        }
+      }
+    >
+      2020
+    </span>
+    <span
+      aria-labelledby="range-slider"
+      aria-orientation="horizontal"
+      aria-valuemax={2020}
+      aria-valuemin={2006}
+      aria-valuenow={2006}
+      aria-valuetext="2006"
+      className="MuiSlider-thumb PrivateValueLabel-thumb-46"
+      data-index={0}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
+        }
+      }
+      tabIndex={0}
+    >
+      <span
+        className="PrivateValueLabel-offset-48 MuiSlider-valueLabel"
+      >
+        <span
+          className="PrivateValueLabel-circle-49"
+        >
+          <span
+            className="PrivateValueLabel-label-50"
+          >
+            2006
+          </span>
+        </span>
+      </span>
+    </span>
+    <span
+      aria-labelledby="range-slider"
+      aria-orientation="horizontal"
+      aria-valuemax={2020}
+      aria-valuemin={2006}
+      aria-valuenow={2020}
+      aria-valuetext="2020"
+      className="MuiSlider-thumb PrivateValueLabel-thumb-46"
+      data-index={1}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "100%",
+        }
+      }
+      tabIndex={0}
+    >
+      <span
+        className="PrivateValueLabel-offset-48 MuiSlider-valueLabel"
+      >
+        <span
+          className="PrivateValueLabel-circle-49"
+        >
+          <span
+            className="PrivateValueLabel-label-50"
+          >
+            2020
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+`;
