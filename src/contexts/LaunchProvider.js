@@ -3,8 +3,8 @@ import React, { createContext, useReducer } from 'react'
 export const LaunchContext = createContext()
 
 const reducer = (state, action) => {
-  console.log('Launch Filter State: ', state)
-  console.log('Launch Filter Action: ', action)
+  // console.log('Launch Filter State: ', state)
+  // console.log('Launch Filter Action: ', action)
   switch (action.type) {
     case 'changeFilterDateRange':
       return {

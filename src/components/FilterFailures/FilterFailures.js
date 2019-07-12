@@ -30,7 +30,7 @@ export default function FilterFailures() {
   return (
     <FormGroup row className='filter-failures'>
       <FormControlLabel
-        label='Show Failures'
+        label={state.filterFailures === true ? 'Show All' : 'Show Failures'}
         labelPlacement='start'
         className={classes.root}
         control={

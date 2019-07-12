@@ -25,7 +25,7 @@ const Landing = () => {
           <span className='landing-button'>
             <Link to='/launches-over-time' className='landing-link'>
               <Button className='graph' variant='contained'>
-                <div>Graphs of Launches</div><i className='fal fa-chart-bar' />
+                <div>Graphs of Launches</div><i className='far fa-chart-bar' />
               </Button>
             </Link>
           </span>

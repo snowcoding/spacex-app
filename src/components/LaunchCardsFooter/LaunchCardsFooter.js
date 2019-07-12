@@ -12,12 +12,10 @@ const LaunchCardsFooter = props => {
   const [state, dispatch] = useContext(LaunchContext)
 
   const handleChangePage = (e,page) => {
-    console.log('page:', page)
     dispatch(changePaginationPage(page))
   }
 
   const handleChangeRowsPerPage = (e) => {
-    console.log('cards per page:', e.target.value)
     dispatch(changeLaunchesPerPage(Number(e.target.value)))
   }
 

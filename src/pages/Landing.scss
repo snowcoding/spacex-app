@@ -35,6 +35,9 @@
           display:flex;
           width: 120%;
           justify-content: space-evenly;
+          &:hover {
+            background-color: #b4c0c9;
+          }
         }
         .explore {
           display:flex;
