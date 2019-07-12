@@ -15,9 +15,9 @@ const LaunchContent = () => {
     <LaunchProvider>
       <Container className='launch-content-container'>
         <Filters />
-        <Container className='launch-cards-container'>
+        <Container >
           <LaunchCardsHeader />
-          <div className='launch-cards'>
+          <div className='launch-cards-container'>
             <LaunchCards setFilteredResultsCount={setFilteredResultsCount} />
           </div>
           <LaunchCardsFooter filteredResultsCount={filteredResultsCount} />
