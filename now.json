@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "rock-launcher",
+    "name": "rocklauncher",
     "builds": [
       {
         "src": "package.json",
