@@ -33,6 +33,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         launchesPerPage: action.launchesPerPage,
+        paginationPage:0,
       }
 
     case 'changeLaunchSort':
