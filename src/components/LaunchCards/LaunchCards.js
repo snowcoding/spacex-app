@@ -10,7 +10,7 @@ import FilterResultsEmpty from '../FilterResultsEmpty/FilterResultsEmpty'
 
 const launchPastsQuery = gql`
   # Sorting Occurs in the query itself
-  query lpq($sort: String, $order: String) {
+  query lpqCards($sort: String, $order: String) {
     launchesPastResult(sort: $sort, order: $order) {
       result {
         totalCount
@@ -34,7 +34,7 @@ const launchPastsQuery = gql`
     }
   }
 `
-const LaunchCards = props => {
+const LaunchCards = (props) => {
   const [state] = useContext(LaunchContext)
   const { setFilteredResultsCount } = props
 
@@ -50,12 +50,12 @@ const LaunchCards = props => {
   }
 
   const payloadURL = Object.keys(state.payload)
-    .filter(k => state.payload[k] === true)
+    .filter((k) => state.payload[k] === true)
     .reduce(payloadURLparams, '')
 
-  const searchQueryString = searchParams => {
+  const searchQueryString = (searchParams) => {
     return Object.keys(searchParams)
-      .filter(k => searchParams[k] && String(searchParams[k]).length > 0)
+      .filter((k) => searchParams[k] && String(searchParams[k]).length > 0)
       .reduce((acc, val) => {
         return `${acc}${acc !== '' ? '&' : ''}${val}=${searchParams[val]}`
       }, '')
@@ -81,82 +81,81 @@ const LaunchCards = props => {
   ])
 
   return (
-    <Query
-      query={launchPastsQuery}
-      variables={{ sort: sort, order: order }}
-    >
+    <Query query={launchPastsQuery} variables={{ sort: sort, order: order }}>
       {({ loading, error, data }) => {
         if (loading) return <LoadingSpinner />
         if (error) return <p>Error :(</p>
 
-        const isPayloadSatOrDragon = pl => {
+        const isPayloadSatOrDragon = (pl) => {
           return (state.payload.satellite && pl.payload_type === 'Satellite') ||
             (state.payload.dragon && pl.payload_type.includes('Dragon'))
             ? true
             : false
         }
 
-        const filteredResults = data.launchesPastResult.data.filter(launch => {
-          //
-          // Filtering begins here
-          //
-          // Date Range Filtering
-          const launchTime = parseInt(
-            launch.launch_date_local.split('-')[0],
-            10
-          )
-          const isCardFilteredByDateRange =
-            launchTime >= state.filterDateRange[0] &&
-            launchTime <= state.filterDateRange[1]
-              ? true
-              : false
+        const filteredResults = data.launchesPastResult.data.filter(
+          (launch) => {
+            //
+            // Filtering begins here
+            //
+            // Date Range Filtering
+            const launchTime = parseInt(
+              launch.launch_date_local.split('-')[0],
+              10
+            )
+            const isCardFilteredByDateRange =
+              launchTime >= state.filterDateRange[0] &&
+              launchTime <= state.filterDateRange[1]
+                ? true
+                : false
 
-          // Failure Selection Filtering
-          const isCardFilteredByFailure =
-            (!launch.launch_success && state.filterFailures) ||
-            !state.filterFailures
-              ? true
-              : false
+            // Failure Selection Filtering
+            const isCardFilteredByFailure =
+              (!launch.launch_success && state.filterFailures) ||
+              !state.filterFailures
+                ? true
+                : false
 
-          // Filtering by Payload Type
-          const isCardFilteredByPayLoad = launch.rocket.second_stage.payloads.some(
-            isPayloadSatOrDragon
-          )
+            // Filtering by Payload Type
+            const isCardFilteredByPayLoad = launch.rocket.second_stage.payloads.some(
+              isPayloadSatOrDragon
+            )
 
-          //Filtering by Payload Weight
-          const payloadLength = launch.rocket.second_stage.payloads.length
-          const isCardFilteredByPayloadWeight =
-            state.payloadWeight === 4 ||
-            (state.payloadWeight === 3 && payloadLength === 3) ||
-            (state.payloadWeight === 2 && payloadLength === 2) ||
-            (state.payloadWeight === 1 && payloadLength === 1)
-              ? true
-              : false
+            //Filtering by Payload Weight
+            const payloadLength = launch.rocket.second_stage.payloads.length
+            const isCardFilteredByPayloadWeight =
+              state.payloadWeight === 4 ||
+              (state.payloadWeight === 3 && payloadLength === 3) ||
+              (state.payloadWeight === 2 && payloadLength === 2) ||
+              (state.payloadWeight === 1 && payloadLength === 1)
+                ? true
+                : false
 
-          //Filtering by countries entered in the seach bar
-          const searchedCountries = state.countries.map(
-            country => country.label
-          )
-          const countriesOnCard = launch.rocket.second_stage.payloads.map(
-            payload => payload.nationality
-          )
-          const isCountryFilteredBySearch =
-            searchedCountries.length === 0 ||
-            searchedCountries.filter(element =>
-              countriesOnCard.includes(element)
-            ).length > 0
-              ? true
-              : false
+            //Filtering by countries entered in the seach bar
+            const searchedCountries = state.countries.map(
+              (country) => country.label
+            )
+            const countriesOnCard = launch.rocket.second_stage.payloads.map(
+              (payload) => payload.nationality
+            )
+            const isCountryFilteredBySearch =
+              searchedCountries.length === 0 ||
+              searchedCountries.filter((element) =>
+                countriesOnCard.includes(element)
+              ).length > 0
+                ? true
+                : false
 
-          const isCardFiltered =
-            isCardFilteredByDateRange &&
-            isCardFilteredByFailure &&
-            isCardFilteredByPayLoad &&
-            isCardFilteredByPayloadWeight &&
-            isCountryFilteredBySearch
+            const isCardFiltered =
+              isCardFilteredByDateRange &&
+              isCardFilteredByFailure &&
+              isCardFilteredByPayLoad &&
+              isCardFilteredByPayloadWeight &&
+              isCountryFilteredBySearch
 
-          return isCardFiltered
-        })
+            return isCardFiltered
+          }
+        )
 
         //
         //Pagination begins here
@@ -181,7 +180,7 @@ const LaunchCards = props => {
             {paginationResults.length === 0 ? (
               <FilterResultsEmpty />
             ) : (
-              paginationResults.map(launch => {
+              paginationResults.map((launch) => {
                 return (
                   <LaunchCard
                     key={launch.id}

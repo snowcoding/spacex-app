@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 })
 
 const launchDetailsQuery = gql`
-  query lpq($launchId: ID!) {
+  query ldq($launchId: ID!) {
     launch(id: $launchId) {
       id
       details
@@ -95,7 +95,7 @@ const LaunchDetails = () => {
                     className={classes.launchVideo}
                   />
                   <LaunchPhotos
-                    photos={data.launch.links.flickr_images.map(cv => ({
+                    photos={data.launch.links.flickr_images.map((cv) => ({
                       imgPath: cv,
                     }))}
                   />

@@ -17,7 +17,7 @@ import ChartYaxisLabel from '../ChartYaxisLabel/ChartYaxisLabel'
 import { yAxisLabelPopover, getChartData } from './utils'
 
 const launchPastsQuery = gql`
-  query lpq {
+  query lpqChart {
     launchesPastResult {
       data {
         id
@@ -99,7 +99,7 @@ export default class LaunchChart extends PureComponent {
                 <XAxis dataKey='year' />
                 <YAxis />
                 <Tooltip />
-                <Legend align='right' verticalAlign='top'/>
+                <Legend align='right' verticalAlign='top' />
                 <Bar dataKey='Falcon1' stackId='a' fill='#43ffca' />
                 <Bar dataKey='Falcon9' stackId='a' fill='#607d8b' />
                 <Bar dataKey='FalconHeavy' stackId='a' fill='#0b0bff' />
