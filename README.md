@@ -48,7 +48,7 @@ The overall approach to this project has been broken down into the following ste
 
 ### Research
 
-In an attempt to distinguish myself, the GraphQL Space X endpoint was used. This required understanding the data. It was important to understand what data was available, how it could be used in problem formulation and in providing a solution. Once this was thoroughly investigated and researched, (thank the stars for GraphiQL!) I was one step closer to the goal.
+The GraphQL Space X endpoint was used. This required understanding the data. It was important to understand what data was available, how it could be used in problem formulation and in providing a solution. Once this was thoroughly investigated and researched, (thank the stars for GraphiQL!) I was one step closer to the goal.
 
 Given the vast amount of data provided, my first thoughts were that charts representing this data would be a cool touch. I wanted to plot things as I like to visualize data. In the charts, we can see that the Periapsis is fairly bi-modal. I would never had been able to grasp that from a tabular or a JSON representation. Temporal data seems like the low hanging fruit and after some digging, a few endpoints were found.
 
@@ -88,8 +88,3 @@ After enough of the app was in place, I "hired" a user tester [ my girlfriend :)
 12. Smarter pagination. User is on page 8 of 10 and hits a filter knob. This filtering drops the content to span 4 pages. Instead of going back to page 1 (current functionality) it should go back to page 4.
 13. Add smoothing, averaging, filtering and common statistics (mean, sd, variance) to the graph.
 14. Investigate how to make the href in anchor tags acceptable in the console.logs
-
-Thank you for this awesome opportunity and regardless of how we proceed, I'm grateful for this experience.
-
-Cheers,
-Vim
