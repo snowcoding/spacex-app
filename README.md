@@ -88,3 +88,5 @@ After enough of the app was in place, I "hired" a user tester [ my girlfriend :)
 12. Smarter pagination. User is on page 8 of 10 and hits a filter knob. This filtering drops the content to span 4 pages. Instead of going back to page 1 (current functionality) it should go back to page 4.
 13. Add smoothing, averaging, filtering and common statistics (mean, sd, variance) to the graph.
 14. Investigate how to make the href in anchor tags acceptable in the console.logs
+15. Add webpack to minify package size and build time
+16. Dockerize it
