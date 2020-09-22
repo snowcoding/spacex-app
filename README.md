@@ -74,6 +74,7 @@ After enough of the app was in place, I "hired" a user tester [ my girlfriend :)
 
 ### Future Work
 
+0. Performance, improve Lighthouse and PageSpeed. 
 1. Increase targeted medias and resolution for more than just desktop. As people are on the move, mobile is practically a body part. Investigate native vs PWA.
 2. Search is currently a search over the countries. Expand search to include other fields like rocket name, year of launch, orbital metrics, etc
 3. Since the persona is a Space X employee, ideally, being able to update the data (mutations) would be needed. This would allow for updates/corrections to the data. Along with this, being able to submit tickets, e.g. JIRA integration.
